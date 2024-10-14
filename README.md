@@ -187,6 +187,112 @@ TAS - Technical Assistance System
 
 <p>Este árbol de navegación proporciona una visión de la estructura de TAS.</p>
 
+<h2>🌟 Funcionalidades del Sistema</h2>
+
+<details>
+  <summary><strong>1. LOGIN</strong></summary>
+  Permite a los usuarios autenticarse en el sistema con sus credenciales (generalmente correo electrónico y contraseña).
+</details>
+
+<details>
+  <summary><strong>2. REGISTRO</strong></summary>
+  Permite a nuevos usuarios crear una cuenta en el sistema, proporcionando información básica como nombre, correo electrónico y contraseña.
+</details>
+
+<details>
+  <summary><strong>3. CONÓCENOS</strong></summary>
+  Una sección que proporciona información sobre la empresa o el equipo detrás del sistema de tickets.
+</details>
+
+<details>
+  <summary><strong>4. LANDING PAGE</strong></summary>
+  La página principal que ven los usuarios al acceder al sitio web, diseñada para presentar el servicio y sus características principales.
+</details>
+
+<details>
+  <summary><strong>5. RESTAURACIÓN DE CREDENCIALES</strong></summary>
+  Permite a los usuarios restablecer su contraseña si la han olvidado.
+</details>
+
+<details>
+  <summary><strong>6. ENVIAR UN CORREO DE RECUPERACIÓN</strong></summary>
+  Parte del proceso de restauración de credenciales, donde se envía un correo al usuario con instrucciones para restablecer su contraseña.
+</details>
+
+<details>
+  <summary><strong>7. DASHBOARD</strong></summary>
+  Una vista general que muestra información relevante y estadísticas sobre los tickets y actividades del usuario.
+</details>
+
+<details>
+  <summary><strong>8. PERFIL DE USUARIO</strong></summary>
+  Permite al usuario ver y editar su información personal.
+</details>
+
+<details>
+  <summary><strong>9. CAMBIAR CORREO</strong></summary>
+  Funcionalidad para que el usuario pueda actualizar su dirección de correo electrónico asociada a la cuenta.
+</details>
+
+<details>
+  <summary><strong>10. CAMBIAR CONTRASEÑA</strong></summary>
+  Permite al usuario cambiar su contraseña actual por una nueva.
+</details>
+
+<details>
+  <summary><strong>11. TICKETS</strong></summary>
+  La sección principal para gestionar las solicitudes de soporte o problemas reportados.
+</details>
+
+<details>
+  <summary><strong>12. NUEVO</strong></summary>
+  Opción para crear un nuevo ticket o solicitud de soporte.
+</details>
+
+<details>
+  <summary><strong>13. SIN RESOLVER</strong></summary>
+  Muestra los tickets que aún no han sido solucionados.
+</details>
+
+<details>
+  <summary><strong>14. ABIERTO</strong></summary>
+  Tickets que están actualmente en proceso de ser atendidos.
+</details>
+
+<details>
+  <summary><strong>15. ESPERA</strong></summary>
+  Tickets que están pendientes de alguna acción por parte del usuario o de un tercero.
+</details>
+
+<details>
+  <summary><strong>16. NO ASIGNADO</strong></summary>
+  Tickets que aún no han sido asignados a un agente de soporte específico.
+</details>
+
+<details>
+  <summary><strong>17. TAREAS PENDIENTES</strong></summary>
+  Lista de actividades o acciones que el usuario o agente debe realizar.
+</details>
+
+<details>
+  <summary><strong>18. ACTIVIDADES RECIENTES</strong></summary>
+  Muestra un registro de las últimas acciones o cambios en los tickets.
+</details>
+
+<details>
+  <summary><strong>19. BUSCAR</strong></summary>
+  Función para encontrar tickets específicos o información dentro del sistema.
+</details>
+
+<details>
+  <summary><strong>20. QUIÉNES SOMOS</strong></summary>
+  Similar a "Conócenos", proporciona información sobre la empresa o equipo, posiblemente con más detalle.
+</details>
+
+<p>Estas funcionalidades en conjunto crean un sistema completo para gestionar solicitudes de soporte, permitiendo a los usuarios crear y dar seguimiento a sus tickets, y a los agentes de soporte administrar y resolver estas solicitudes de manera eficiente.</p>
+
+
+
 
 ---
 ## 📷 Capturas de Pantalla
