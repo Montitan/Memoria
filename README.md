@@ -271,13 +271,17 @@ asegurando una gestión técnica más ágil y una experiencia mejorada para todo
 
 ---
 
-### Resumen de Recursos
-| Componente         | Almacenamiento | CPU | RAM     | IP               |
-|--------------------|----------------|-----|---------|-------------------|
-| Máquina Host       | N/A            | N/A | 8GB     | 100.77.20.132     |
-| Cliente            | 14GB           | 1   | 2GB     | 192.168.1.10/24   |
-| Router             | 14GB           | 1   | 2GB     | 192.168.1.1/24    |
-| NGINX              | 14GB           | 1   | 2GB     | 192.168.100.102/24 |
+## 🖥️ Especificaciones del Sistema
+
+| COMPONENTE    | SO                  | ALMACENAMIENTO | CPU          | RAM  | IP                | GATEWAY      |
+|---------------|---------------------|----------------|--------------|------|-------------------|--------------|
+| MAQUINA HOST  | Intel Core i3 4th   | 465 GB         | 4Cores       | 8 GB | 100.77.20.132     | 100.77.20.1  |
+| CLIENTE       | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.10/24   | 192.168.1.1  |
+| ROUTER / DHCP | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.1/24    | 192.168.1.1  |
+| NGINX         | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.100.102/24| 192.168.1.1  |
+| BBDD          | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.103/24  | 192.168.1.1  |
+| DNS           | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.104/24  | 192.168.1.1  |
+
 
 
 ---
