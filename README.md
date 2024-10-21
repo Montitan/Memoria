@@ -368,3 +368,10 @@ Categorización de incidencias por temáticas.
 Gestión de usuarios que reportan incidencias.
 Jerarquía de trabajadores a través de la relación de supervisión
 
+# Gestor de Incidencias
+
+## Diseño Esquemático de la Base de Datos
+
+![Diagrama de la Base de Datos](https://github.com/Montitan/Memoria/blob/main/proyecto-web-tas/assets/img/DIAGRAMA%20BBDD.png?raw=true)
+
+
