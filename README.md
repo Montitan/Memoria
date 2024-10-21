@@ -292,15 +292,79 @@ TAS - Technical Assistance System
 <p>Estas funcionalidades en conjunto crean un sistema completo para gestionar solicitudes de soporte, permitiendo a los usuarios crear y dar seguimiento a sus tickets, y a los agentes de soporte administrar y resolver estas solicitudes de manera eficiente.</p>
 
 
-
-
+| ID  | Funcionalidad                   | Tiempo Estimado   |
+|-----|----------------------------------|-------------------|
+| F1  | Login                            | 2 días            |
+| F2  | Registro                         | 2 días            |
+| F3  | Conócenos                        | 2 días            |
+| F4  | Landing Page                     | 1 semana          |
+| F5  | Restauración de credenciales     | 2 días            |
+| F6  | Enviar correo de recuperación    | 2 días            |
+| F7  | Dashboard                        | 1 semana y media  |
+|     | - Perfil de usuario              |                   |
+|     | - Cambiar correo                 |                   |
+|     | - Cambiar contraseña             |                   |
+| F8  | Gestor de Tickets                | 4 días            |
+|     | - Nuevo                          |                   |
+|     | - Sin resolver                   |                   |
+|     | - Abierto, Espera, No asignado   |                   |
+| F9  | Tareas pendientes                | 2 días            |
+| F10 | Buscar                           | 2 días            |
+| F11 | Quiénes somos                    | 1 día             |
 ---
-## 📷 Capturas de Pantalla
 
-![Captura de Pantalla 1](https://via.placeholder.com/600x400) <!-- Reemplaza con enlaces a tus capturas -->
-![Captura de Pantalla 2](https://via.placeholder.com/600x400)
+## 🚀 BBDD
 
----
 
-## 🚀 Instalación
+Estructura de la base de datos
+
+Tabla: Trabajadores
+id_trabajador (clave primaria)
+nombre
+apellido
+email
+telefono
+departamento
+cargo
+fecha_contratacion
+estado (activo/inactivo)
+supervisor_id (clave foránea a la misma tabla)
+especialidad
+nivel_accesol
+
+Tabla: Incidencias
+id_incidencia (clave primaria)
+titulo
+descripcion
+fecha_creacion
+fecha_actualizacion
+fecha_cierre
+estado (abierta, en progreso, cerrada, etc.)
+prioridad (baja, media, alta, crítica)
+id_usuario (clave foránea a la tabla Usuarios)
+id_tematica (clave foránea a la tabla Tematicas)
+tiempo_estimado_resolucion
+tiempo_real_resolucion
+notas_internas
+
+Tabla: Usuarios
+-id_usuario (clave primaria)
+nombre
+apellido
+email
+telefono
+empresa
+departamento
+cargo
+fecha_registro
+ultima_actividad
+preferencia_contacto
+
+
+Este diseño permite:
+Asignación múltiple de trabajadores a incidencias.
+Seguimiento detallado de cada incidencia.
+Categorización de incidencias por temáticas.
+Gestión de usuarios que reportan incidencias.
+Jerarquía de trabajadores a través de la relación de supervisión
 
