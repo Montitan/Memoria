@@ -375,3 +375,109 @@ Jerarquía de trabajadores a través de la relación de supervisión
 ![Diagrama de la Base de Datos](https://github.com/Montitan/Memoria/blob/main/proyecto-web-tas/assets/img/DIAGRAMA%20BBDD.png?raw=true)
 
 
+
+
+Cada etapa requerida para establecer adecuadamente la red en una máquina virtual Proxmox, abarca la formación de puentes de red, la configuración de direcciones IP a través de Netplan, y la administración de reglas con iptables para la ruta de tráfico.
+Vamos a explicar la instalación y configuración de los servicios DHCP y DNS a través de isc-dhcp-server y bind9, posibilitando una administración integral de la red interna. Además, abordaremos las prácticas óptimas, tales como efectuar copias de seguridad de los archivos de configuración y la relevancia de comprobar cada configuración para asegurar una comunicación eficaz y segura entre los dispositivos de su infraestructura virtual.
+Además, detallaremos órdenes fundamentales y su objetivo, desde la implementación de NAT en iptables hasta la configuración de zonas de dominio en el servidor DNS.
+
+
+
+# ROUTER
+
+## Configuración del Hardware de la Máquina Virtual
+
+Configuración de Hardware VM Router
+
+### Preparación Inicial
+
+Antes de proceder con la configuración de Netplan, es fundamental realizar una modificación crucial en la configuración de hardware de la máquina virtual. Por defecto, las máquinas virtuales están equipadas con una única interfaz de red. Para garantizar un rendimiento óptimo del router, es imperativo agregar una interfaz de red adicional.
+
+
+![Configuración de Hardware VM Router](https://github.com/Montitan/Memoria/blob/main/proyecto-web-tas/assets/img/Hardware%20VM%20Router%201.png?raw=true)
+
+### Procedimiento para Agregar una Interfaz de Red
+
+1. **Acceso a la Configuración**: Ingrese a la configuración de hardware de la máquina virtual.
+2. **Localización**: Ubique la sección de dispositivos de red.
+3. **Adición**: Incorpore una nueva interfaz de red a la configuración existente.
+4. **Verificación**: Asegúrese de que la nueva interfaz esté correctamente configurada y activada.
+
+> **Nota Importante**: Esta adición es esencial para establecer las conexiones necesarias y permitir que el router virtual funcione eficientemente en su entorno de red.
+
+### Beneficios de la Configuración Dual
+
+- **Mayor Flexibilidad**: Permite separar el tráfico de red interno y externo.
+- **Seguridad Mejorada**: Facilita la implementación de políticas de seguridad más robustas.
+- **Rendimiento Optimizado**: Distribuye la carga de red entre dos interfaces.
+
+
+
+# Configuración de Red Virtual
+
+## Puentes Linux (Linux Bridges)
+
+Se utilizan dos puentes Linux para gestionar el tráfico de red entre las máquinas virtuales y la red externa:
+
+![Linux Bridge Hardware VM Router](https://github.com/Montitan/Memoria/blob/main/proyecto-web-tas/assets/img/Linux%20Bridge%20Hardware%20VM%20Router%201.png?raw=true)
+
+
+### 1. vmr0 (Puente Externo)
+
+- **Red**: 100.77.20.0/24
+- **Función**: Conecta el entorno virtual con la red externa a través del router del host.
+- **Características**:
+  - Actúa como punto de salida del tráfico hacia Internet.
+  - Facilita la comunicación entre las máquinas virtuales y la red física externa.
+
+### 2. vmr1 (Puente Interno)
+
+- **Red**: 192.168.1.0/24
+- **Función**: Establece una red interna para la comunicación entre máquinas virtuales.
+- **Características**:
+  - Permite que las máquinas virtuales se comuniquen entre sí.
+  - Proporciona una ruta para que las máquinas virtuales accedan a la red externa a través de vmr0.
+
+## Funcionamiento del Sistema
+
+### Comunicación Interna
+
+- Las máquinas virtuales conectadas a `vmr1` pueden comunicarse directamente entre sí dentro de la red 192.168.1.0/24.
+
+### Acceso a Internet
+
+1. El tráfico de las máquinas virtuales destinado a Internet pasa primero por `vmr1`.
+2. A continuación, se enruta a través de `vmr0` para llegar a la red externa (100.77.20.0/24).
+3. Por último, el router host gestiona la conexión a Internet.
+
+### Segmentación y Seguridad
+
+- Esta configuración permite una clara separación entre el tráfico interno y externo.
+- Facilita la aplicación de políticas de seguridad y control de acceso entre redes.
+
+## Diagrama de Red
+
+```
++----------------+       +----------------+
+|  Máquinas      |       |                |
+|  Virtuales     |       |   Internet     |
+|                |       |                |
+|(192.168.1.0/24)|       |                |
+|       |        |       |                |
+|       |        |       |                |
+|     vmr1       |       |                |
+|       |        |       |                |
+|       |        |       |                |
+|     vmr0       |       |                |
+|       |        |       |                |
++-------|--------+       +----------------+
+        |
+        |
+   (100.77.20.0/24)
+        |
+        |
++-------|--------+
+|   Router Host  |
++----------------+
+```
+
