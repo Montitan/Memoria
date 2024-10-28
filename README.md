@@ -1,6 +1,6 @@
 # 🚀 TAS - Technical Assistance System
 
-![Banner de TAS]([https://github.com/Beasluna/TAS/blob/main/proyecto-web-tas/assets/img/bannerTas.png?raw=true](https://github.com/Montitan/TAS/blob/main/proyecto-web-tas/assets/img/bannerTas.png?raw=true))
+![Banner de TAS](https://github.com/Beasluna/TAS/blob/main/proyecto-web-tas/assets/img/bannerTas.png?raw=true](https://github.com/Montitan/TAS/blob/main/proyecto-web-tas/assets/img/bannerTas.png?raw=true)
 
 ## Descripción
 
