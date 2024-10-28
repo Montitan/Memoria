@@ -391,7 +391,8 @@ Configuración de Hardware VM Router
 
 ### Preparación Inicial
 
-Antes de proceder con la configuración de Netplan, es fundamental realizar una modificación crucial en la configuración de hardware de la máquina virtual. Por defecto, las máquinas virtuales están equipadas con una única interfaz de red. Para garantizar un rendimiento óptimo del router, es imperativo agregar una interfaz de red adicional.
+> [!IMPORTANT]
+> Antes de proceder con la configuración de Netplan, es fundamental realizar una modificación crucial en la configuración de hardware de la máquina virtual. Por defecto, las máquinas virtuales están equipadas con una única interfaz de red. Para garantizar un rendimiento óptimo del router, es imperativo agregar una interfaz de red adicional.
 
 
 ![Configuración de Hardware VM Router](https://github.com/Montitan/Memoria/blob/main/proyecto-web-tas/assets/img/Hardware%20VM%20Router%201.png?raw=true)
@@ -403,7 +404,8 @@ Antes de proceder con la configuración de Netplan, es fundamental realizar una 
 3. **Adición**: Incorpore una nueva interfaz de red a la configuración existente.
 4. **Verificación**: Asegúrese de que la nueva interfaz esté correctamente configurada y activada.
 
-> **Nota Importante**: Esta adición es esencial para establecer las conexiones necesarias y permitir que el router virtual funcione eficientemente en su entorno de red.
+> [!CAUTION]
+> Antes de proceder con la configuración de Netplan, es fundamental realizar una modificación crucial en la configuración de hardware de la máquina virtual. Por defecto, las máquinas virtuales están equipadas con una única interfaz de red. Para garantizar un rendimiento óptimo del router, es imperativo agregar una interfaz de red adicional.
 
 ### Beneficios de la Configuración Dual
 
@@ -480,4 +482,37 @@ Se utilizan dos puentes Linux para gestionar el tráfico de red entre las máqui
 |   Router Host  |
 +----------------+
 ```
+
+Comprobamos que tengamos conexión a internet para poder instalar qemu-guest-agent (sirve para poder visualizar dentro de proxmox que direcciones ip tiene las mv)
+
+> [!TIP]
+> Opcional: Instalar net-tools para poder monitorear la red, supervisar servicios, máquinas, tráfico de red y dispositivos de red, y no tener que utilizar `ip -a` todo el tiempo. La manera recomendada de configurar direcciones IP cuando no tenemos DHCP es usando NETPLAN.
+
+> [!CAUTION]
+> Es muy importante tener en cuenta lo siguiente:
+> 
+> 1. Si el archivo tiene el nombre '50-cloud-init.yaml' (que viene por defecto), es necesario renombrarlo.
+> 2. En caso de reiniciar la máquina, el archivo '50-cloud-init.yaml' no se guarda y se vuelve a generar automáticamente.
+> 3. Al editar el archivo de configuración, debemos tener en cuenta los rangos de IP que tenemos establecidos en Proxmox.
+>
+> Procedimiento recomendado:
+> 1. Renombrar el archivo '50-cloud-init.yaml' a un nombre personalizado, por ejemplo '01-netcfg.yaml'.
+> 2. Editar el nuevo archivo con la configuración deseada.
+> 3. Asegurarse de que las IP configuradas estén dentro del rango permitido en Proxmox.
+
+
+![Interfaces de red](https://github.com/Montitan/Memoria/blob/main/proyecto-web-tas/assets/img/Interfaces%20de%20red.png?raw=true)
+
+
+Como podemos ver en la imagen superior estamos editando ambas interfaces de red.
+Esta edición de interfaces nos permitirá la comunicación entre máquinas para que tengan comunicación con el host a partir del mismo router.
+En la interfaz ens18 asignamos la direccion ip 100.77.20.24/24
+Así mismo definimos los dns, como las rutas que en este caso sería la salida (gateway) de esa interfaz
+
+Por otra parte en la interfaz ens 19 asignamos la dirección ip 192.168.1.1/24, aquí no habrá salida ya que ens 18 será la que nos la brinde.
+
+
+—> En un futuro explicaremos cómo hacerlo.
+
+Una vez que está bien la configuración aplicamos la configuración con el siguiente comando.
 
