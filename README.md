@@ -138,7 +138,7 @@ asegurando una gestión técnica más ágil y una experiencia mejorada para todo
 
 | COMPONENTE    | SO                  | ALMACENAMIENTO | CPU          | RAM  | IP                | GATEWAY      |
 |---------------|---------------------|----------------|--------------|------|-------------------|--------------|
-| MAQUINA HOST  | Intel Core i3 4ta   | 465 GB         | 4 Cores      | 8 GB | 100.77.20.132     | 100.77.20.1  |
+| MAQUINA HOST  | Proxmox             | 465 GB         | 4 Cores      | 8 GB | 100.77.20.132     | 100.77.20.1  |
 | CLIENTE       | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.10/24   | 192.168.1.1  |
 | ROUTER / DHCP | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.1/24    | 192.168.1.1  |
 | NGINX         | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.100.102/24| 192.168.1.1  |
