@@ -8,7 +8,6 @@ TAS es un sistema integral de gestión de incidencias diseñado para facilitar l
 
 ---
 
----
 ## 🎯 Objetivos del Proyecto
 
 Nuestro sistema TAS (Technical Assistance System) está diseñado para alcanzar los siguientes objetivos clave:
@@ -67,7 +66,6 @@ asegurando una gestión técnica más ágil y una experiencia mejorada para todo
 | DNS           | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.104/24  | 192.168.1.1  |
 
 
-
 ---
 
 <h2>🌳 Árbol de Navegación</h2>
@@ -107,6 +105,8 @@ TAS - Technical Assistance System
 </pre>
 
 <p>Este árbol de navegación proporciona una visión de la estructura de TAS.</p>
+
+---
 
 ## 🌟 Funcionalidades
 
@@ -154,6 +154,7 @@ TAS - Technical Assistance System
 </details>
 
 <p>Estas funcionalidades en conjunto crean un sistema completo para gestionar solicitudes de soporte, permitiendo a los usuarios crear y dar seguimiento a sus tickets, y a los agentes de soporte administrar y resolver estas solicitudes de manera eficiente.</p>
+
 
 
 | ID  | Funcionalidad                   | Tiempo Estimado   |
@@ -240,10 +241,12 @@ Jerarquía de trabajadores a través de la relación de supervisión
 
 
 
+---
 
 Cada etapa requerida para establecer adecuadamente la red en una máquina virtual Proxmox, abarca la formación de puentes de red, la configuración de direcciones IP a través de Netplan, y la administración de reglas con iptables para la ruta de tráfico.
 Vamos a explicar la instalación y configuración de los servicios DHCP y DNS a través de isc-dhcp-server y bind9, posibilitando una administración integral de la red interna. Además, abordaremos las prácticas óptimas, tales como efectuar copias de seguridad de los archivos de configuración y la relevancia de comprobar cada configuración para asegurar una comunicación eficaz y segura entre los dispositivos de su infraestructura virtual.
 Además, detallaremos órdenes fundamentales y su objetivo, desde la implementación de NAT en iptables hasta la configuración de zonas de dominio en el servidor DNS.
+---
 
 
 
@@ -277,6 +280,7 @@ Configuración de Hardware VM Router
 - **Seguridad Mejorada**: Facilita la implementación de políticas de seguridad más robustas.
 - **Rendimiento Optimizado**: Distribuye la carga de red entre dos interfaces.
 
+---
 
 
 # Configuración de Red Virtual
@@ -304,6 +308,8 @@ Se utilizan dos puentes Linux para gestionar el tráfico de red entre las máqui
   - Permite que las máquinas virtuales se comuniquen entre sí.
   - Proporciona una ruta para que las máquinas virtuales accedan a la red externa a través de vmr0.
 
+---
+
 ## Funcionamiento del Sistema
 
 ### Comunicación Interna
@@ -320,6 +326,8 @@ Se utilizan dos puentes Linux para gestionar el tráfico de red entre las máqui
 
 - Esta configuración permite una clara separación entre el tráfico interno y externo.
 - Facilita la aplicación de políticas de seguridad y control de acceso entre redes.
+
+---
 
 ## Diagrama de Red
 
@@ -346,6 +354,7 @@ Se utilizan dos puentes Linux para gestionar el tráfico de red entre las máqui
 |   Router Host  |
 +----------------+
 ```
+---
 
 Comprobamos que tengamos conexión a internet para poder instalar qemu-guest-agent (sirve para poder visualizar dentro de proxmox que direcciones ip tiene las mv)
 
@@ -379,4 +388,5 @@ Por otra parte en la interfaz ens 19 asignamos la dirección ip 192.168.1.1/24, 
 —> En un futuro explicaremos cómo hacerlo.
 
 Una vez que está bien la configuración aplicamos la configuración con el siguiente comando.
+---
 
