@@ -98,41 +98,6 @@ asegurando una gestión técnica más ágil y una experiencia mejorada para todo
 - **Control de Versiones**: Git
 
 ---
-## 🖥️ Características del Sistema
-
-### 1. Máquina Host
-- **URL**: [https://100.77.20.132:8006](https://100.77.20.132:8006)
-- **CPU**: Intel Core i3 (4ta generación)
-- **RAM**: 8GB
-- **Cores**: 4
-- **Conexión Ethernet**: 100.77.20.132
-- **Gateway**: 100.77.20.1
-
----
-
-### 2. Cliente (Ubuntu Server 22.04.01)
-- **Almacenamiento**: 14GB
-- **CPU**: 1
-- **RAM**: 2048 MB (2GB)
-- **IP**: 192.168.1.10/24
-
----
-
-### 3. Router (Ubuntu 24.04.01)
-- **Almacenamiento**: 14GB
-- **CPU**: 1
-- **RAM**: 2048 MB (2GB)
-- **IP**: 192.168.1.1/24
-
----
-
-### 4. NGINX (Linux Bridge)
-- **Almacenamiento**: 14GB
-- **CPU**: 1
-- **RAM**: 2048 MB (2GB)
-- **IP**: 192.168.100.102/24
-
----
 
 ## 🖥️ Especificaciones del Sistema
 
