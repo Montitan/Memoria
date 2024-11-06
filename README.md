@@ -59,11 +59,11 @@ asegurando una gestión técnica más ágil y una experiencia mejorada para todo
 | COMPONENTE    | SO                  | ALMACENAMIENTO | CPU          | RAM  | IP                | GATEWAY      |
 |---------------|---------------------|----------------|--------------|------|-------------------|--------------|
 | MAQUINA HOST  | Proxmox             | 465 GB         | 4 Cores      | 8 GB | 100.77.20.132     | 100.77.20.1  |
-| CLIENTE       | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.10/24   | 192.168.1.1  |
+| CLIENTE       | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.11/24   | 192.168.1.1  |
 | ROUTER / DHCP | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.1/24    | 192.168.1.1  |
-| NGINX         | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.100.102/24| 192.168.1.1  |
-| BBDD          | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.103/24  | 192.168.1.1  |
-| DNS           | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.104/24  | 192.168.1.1  |
+| NGINX         | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.3/24    | 192.168.1.1  |
+| BBDD          | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.4/24    | 192.168.1.1  |
+| DNS           | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.2/24    | 192.168.1.1  |
 
 
 ---
@@ -178,11 +178,9 @@ TAS - Technical Assistance System
 | F11 | Quiénes somos                    | 1 día             |
 ---
 
-## <h2 align="center">🚀 Estructura de la Base de Datos 🚀</h2>
-
+## 🚀 Estructura de la Base de Datos 🚀
 ## 👥 Tabla: Trabajadores
-
-<details>
+<details> 
 <summary>Ver detalles</summary>
 
 | Campo | Tipo | Restricciones | Descripción |
@@ -201,9 +199,7 @@ TAS - Technical Assistance System
 | 🔐 nivel_acceso | INT | | Nivel de permisos en el sistema |
 
 </details>
-
 ## 🎫 Tabla: Incidencias
-
 <details>
 <summary>Ver detalles</summary>
 
@@ -226,7 +222,6 @@ TAS - Technical Assistance System
 </details>
 
 ## 👥 Tabla: Usuarios
-
 <details>
 <summary>Ver detalles</summary>
 
@@ -247,7 +242,6 @@ TAS - Technical Assistance System
 </details>
 
 ## 📋 Tabla: Asignaciones
-
 <details>
 <summary>Ver detalles</summary>
 
@@ -261,7 +255,6 @@ TAS - Technical Assistance System
 </details>
 
 ## 🏷️ Tabla: Tematicas
-
 <details>
 <summary>Ver detalles</summary>
 
