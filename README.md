@@ -178,46 +178,49 @@ TAS - Technical Assistance System
 | F11 | Quiénes somos                    | 1 día             |
 ---
 
+
 ## 🚀 Estructura de la Base de Datos 🚀
+
 ## 👥 Tabla: Trabajadores
 <details> 
 <summary>Ver detalles</summary>
 
-| Campo | Tipo | Restricciones | Descripción |
-|-------|------|---------------|-------------|
-| 🔑 id_trabajador | INT | PRIMARY KEY | Identificador único del trabajador |
-| 👤 nombre | VARCHAR(50) | | Nombre del trabajador |
-| 👤 apellido | VARCHAR(50) | | Apellido del trabajador |
-| 📧 email | VARCHAR(100) | | Correo electrónico del trabajador |
-| 📞 telefono | VARCHAR(20) | | Número de teléfono |
-| 🏢 departamento | VARCHAR(50) | | Departamento al que pertenece |
-| 💼 cargo | VARCHAR(50) | | Posición en la empresa |
-| 📅 fecha_contratacion | DATE | | Fecha de inicio en la empresa |
-| 🚦 estado | TINYINT(1) | | 'activo' o 'inactivo' |
-| 👨‍💼 supervisor_id | INT | FOREIGN KEY | ID del supervisor (auto-referencia) |
-| 🛠️ especialidad | VARCHAR(50) | | Área de experiencia |
-| 🔐 nivel_acceso | INT | | Nivel de permisos en el sistema |
+| Campo | Descripción |
+|-------|-------------|
+| 🔑 id_trabajador | Identificador único del trabajador |
+| 👤 nombre | Nombre del trabajador |
+| 👤 apellido | Apellido del trabajador |
+| 📧 email | Correo electrónico del trabajador |
+| 📞 telefono | Número de teléfono |
+| 🏢 departamento | Departamento al que pertenece |
+| 💼 cargo | Posición en la empresa |
+| 📅 fecha_contratacion | Fecha de inicio en la empresa |
+| 🚦 estado | 'activo' o 'inactivo' |
+| 👨‍💼 supervisor_id | ID del supervisor (auto-referencia) |
+| 🛠️ especialidad | Área de experiencia |
+| 🔐 nivel_acceso | Nivel de permisos en el sistema |
 
 </details>
+
 ## 🎫 Tabla: Incidencias
 <details>
 <summary>Ver detalles</summary>
 
-| Campo | Tipo | Restricciones | Descripción |
-|-------|------|---------------|-------------|
-| 🔑 id_incidencia | INT | PRIMARY KEY | Identificador único de la incidencia |
-| 📝 titulo | VARCHAR(100) | | Título breve de la incidencia |
-| 📄 descripcion | TEXT | | Descripción detallada |
-| 📅 fecha_creacion | DATE | | Fecha de creación de la incidencia |
-| 🔄 fecha_actualizacion | DATE | | Fecha de última actualización |
-| 🏁 fecha_cierre | DATE | | Fecha de resolución |
-| 🚦 estado | ENUM | | 'abierta', 'en progreso', 'cerrada' |
-| ⚠️ prioridad | ENUM | | 'baja', 'media', 'alta', 'crítica' |
-| 👤 id_usuario | INT | FOREIGN KEY | ID del usuario que reportó |
-| 🏷️ id_tematica | INT | FOREIGN KEY | ID de la temática asociada |
-| ⏱️ tiempo_estimado_resolucion | TIMESTAMP | | Tiempo previsto para resolver |
-| ⏱️ tiempo_real_resolucion | TIMESTAMP | | Tiempo real de resolución |
-| 📝 notas_internas | TEXT | | Comentarios internos |
+| Campo | Descripción |
+|-------|-------------|
+| 🔑 id_incidencia | Identificador único de la incidencia |
+| 📝 titulo | Título breve de la incidencia |
+| 📄 descripcion | Descripción detallada |
+| 📅 fecha_creacion | Fecha de creación de la incidencia |
+| 🔄 fecha_actualizacion | Fecha de última actualización |
+| 🏁 fecha_cierre | Fecha de resolución |
+| 🚦 estado | 'abierta', 'en progreso', 'cerrada' |
+| ⚠️ prioridad | 'baja', 'media', 'alta', 'crítica' |
+| 👤 id_usuario | ID del usuario que reportó |
+| 🏷️ id_tematica | ID de la temática asociada |
+| ⏱️ tiempo_estimado_resolucion | Tiempo previsto para resolver |
+| ⏱️ tiempo_real_resolucion | Tiempo real de resolución |
+| 📝 notas_internas | Comentarios internos |
 
 </details>
 
@@ -225,19 +228,19 @@ TAS - Technical Assistance System
 <details>
 <summary>Ver detalles</summary>
 
-| Campo | Tipo | Restricciones | Descripción |
-|-------|------|---------------|-------------|
-| 🔑 id_usuario | INT | PRIMARY KEY, AUTO_INCREMENT | Identificador único del usuario |
-| 👤 nombre | VARCHAR(50) | | Nombre del usuario |
-| 👤 apellido | VARCHAR(50) | | Apellido del usuario |
-| 📧 email | VARCHAR(100) | | Correo electrónico |
-| 📞 telefono | INT(9) | | Número de teléfono |
-| 🏢 empresa | VARCHAR(100) | | Empresa a la que pertenece |
-| 🏢 departamento | VARCHAR(50) | | Departamento en su empresa |
-| 💼 cargo | VARCHAR(50) | | Posición en su empresa |
-| 📅 fecha_registro | DATE | | Fecha de alta en el sistema |
-| 🕒 ultima_actividad | DATETIME | | Último acceso o acción |
-| 📣 preferencia_contacto | ENUM | | 'email', 'telefono', 'sms' |
+| Campo | Descripción |
+|-------|-------------|
+| 🔑 id_usuario | Identificador único del usuario |
+| 👤 nombre | Nombre del usuario |
+| 👤 apellido | Apellido del usuario |
+| 📧 email | Correo electrónico |
+| 📞 telefono | Número de teléfono |
+| 🏢 empresa | Empresa a la que pertenece |
+| 🏢 departamento | Departamento en su empresa |
+| 💼 cargo | Posición en su empresa |
+| 📅 fecha_registro | Fecha de alta en el sistema |
+| 🕒 ultima_actividad | Último acceso o acción |
+| 📣 preferencia_contacto | 'email', 'telefono', 'sms' |
 
 </details>
 
@@ -245,12 +248,12 @@ TAS - Technical Assistance System
 <details>
 <summary>Ver detalles</summary>
 
-| Campo | Tipo | Restricciones | Descripción |
-|-------|------|---------------|-------------|
-| 🔑 id_asignacion | INT | PRIMARY KEY | Identificador único de la asignación |
-| 🎫 id_incidencia | INT | FOREIGN KEY | ID de la incidencia asignada |
-| 👥 id_trabajador | INT | FOREIGN KEY | ID del trabajador asignado |
-| 📅 fecha_asignacion | DATETIME | | Fecha y hora de la asignación |
+| Campo | Descripción |
+|-------|-------------|
+| 🔑 id_asignacion | Identificador único de la asignación |
+| 🎫 id_incidencia | ID de la incidencia asignada |
+| 👥 id_trabajador | ID del trabajador asignado |
+| 📅 fecha_asignacion | Fecha y hora de la asignación |
 
 </details>
 
@@ -258,11 +261,11 @@ TAS - Technical Assistance System
 <details>
 <summary>Ver detalles</summary>
 
-| Campo | Tipo | Restricciones | Descripción |
-|-------|------|---------------|-------------|
-| 🔑 id_tematica | INT | PRIMARY KEY, AUTO_INCREMENT | Identificador único de la temática |
-| 📌 nombre | VARCHAR(50) | | Nombre de la temática |
-| 📝 descripcion | TEXT | | Descripción de la temática |
+| Campo | Descripción |
+|-------|-------------|
+| 🔑 id_tematica | Identificador único de la temática |
+| 📌 nombre | Nombre de la temática |
+| 📝 descripcion | Descripción de la temática |
 
 </details>
 
@@ -274,7 +277,6 @@ TAS - Technical Assistance System
 - 🏷️ **Temáticas** categorizan las Incidencias.
 
 ### Este diseño permite una gestión eficiente de incidencias, trabajadores y usuarios en el sistema. 🚀
-
 
 # Gestor de Incidencias
 
