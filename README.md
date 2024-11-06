@@ -178,60 +178,110 @@ TAS - Technical Assistance System
 | F11 | Quiénes somos                    | 1 día             |
 ---
 
-## 🚀 BBDD
+## <h2 align="center">🚀 Estructura de la Base de Datos 🚀</h2>
 
+## 👥 Tabla: Trabajadores
 
-Estructura de la base de datos
+<details>
+<summary>Ver detalles</summary>
 
-Tabla: Trabajadores
-id_trabajador (clave primaria)
-nombre
-apellido
-email
-telefono
-departamento
-cargo
-fecha_contratacion
-estado (activo/inactivo)
-supervisor_id (clave foránea a la misma tabla)
-especialidad
-nivel_accesol
+| Campo | Tipo | Restricciones | Descripción |
+|-------|------|---------------|-------------|
+| 🔑 id_trabajador | INT | PRIMARY KEY | Identificador único del trabajador |
+| 👤 nombre | VARCHAR(50) | | Nombre del trabajador |
+| 👤 apellido | VARCHAR(50) | | Apellido del trabajador |
+| 📧 email | VARCHAR(100) | | Correo electrónico del trabajador |
+| 📞 telefono | VARCHAR(20) | | Número de teléfono |
+| 🏢 departamento | VARCHAR(50) | | Departamento al que pertenece |
+| 💼 cargo | VARCHAR(50) | | Posición en la empresa |
+| 📅 fecha_contratacion | DATE | | Fecha de inicio en la empresa |
+| 🚦 estado | TINYINT(1) | | 'activo' o 'inactivo' |
+| 👨‍💼 supervisor_id | INT | FOREIGN KEY | ID del supervisor (auto-referencia) |
+| 🛠️ especialidad | VARCHAR(50) | | Área de experiencia |
+| 🔐 nivel_acceso | INT | | Nivel de permisos en el sistema |
 
-Tabla: Incidencias
-id_incidencia (clave primaria)
-titulo
-descripcion
-fecha_creacion
-fecha_actualizacion
-fecha_cierre
-estado (abierta, en progreso, cerrada, etc.)
-prioridad (baja, media, alta, crítica)
-id_usuario (clave foránea a la tabla Usuarios)
-id_tematica (clave foránea a la tabla Tematicas)
-tiempo_estimado_resolucion
-tiempo_real_resolucion
-notas_internas
+</details>
 
-Tabla: Usuarios
--id_usuario (clave primaria)
-nombre
-apellido
-email
-telefono
-empresa
-departamento
-cargo
-fecha_registro
-ultima_actividad
-preferencia_contacto
+## 🎫 Tabla: Incidencias
 
+<details>
+<summary>Ver detalles</summary>
 
-Este diseño permite:
-Asignación múltiple de trabajadores a incidencias.
-Seguimiento detallado de cada incidencia.
-Categorización de incidencias por temáticas.
-Gestión de usuarios que reportan incidencias.
-Jerarquía de trabajadores a través de la relación de supervisión
+| Campo | Tipo | Restricciones | Descripción |
+|-------|------|---------------|-------------|
+| 🔑 id_incidencia | INT | PRIMARY KEY | Identificador único de la incidencia |
+| 📝 titulo | VARCHAR(100) | | Título breve de la incidencia |
+| 📄 descripcion | TEXT | | Descripción detallada |
+| 📅 fecha_creacion | DATE | | Fecha de creación de la incidencia |
+| 🔄 fecha_actualizacion | DATE | | Fecha de última actualización |
+| 🏁 fecha_cierre | DATE | | Fecha de resolución |
+| 🚦 estado | ENUM | | 'abierta', 'en progreso', 'cerrada' |
+| ⚠️ prioridad | ENUM | | 'baja', 'media', 'alta', 'crítica' |
+| 👤 id_usuario | INT | FOREIGN KEY | ID del usuario que reportó |
+| 🏷️ id_tematica | INT | FOREIGN KEY | ID de la temática asociada |
+| ⏱️ tiempo_estimado_resolucion | TIMESTAMP | | Tiempo previsto para resolver |
+| ⏱️ tiempo_real_resolucion | TIMESTAMP | | Tiempo real de resolución |
+| 📝 notas_internas | TEXT | | Comentarios internos |
+
+</details>
+
+## 👥 Tabla: Usuarios
+
+<details>
+<summary>Ver detalles</summary>
+
+| Campo | Tipo | Restricciones | Descripción |
+|-------|------|---------------|-------------|
+| 🔑 id_usuario | INT | PRIMARY KEY, AUTO_INCREMENT | Identificador único del usuario |
+| 👤 nombre | VARCHAR(50) | | Nombre del usuario |
+| 👤 apellido | VARCHAR(50) | | Apellido del usuario |
+| 📧 email | VARCHAR(100) | | Correo electrónico |
+| 📞 telefono | INT(9) | | Número de teléfono |
+| 🏢 empresa | VARCHAR(100) | | Empresa a la que pertenece |
+| 🏢 departamento | VARCHAR(50) | | Departamento en su empresa |
+| 💼 cargo | VARCHAR(50) | | Posición en su empresa |
+| 📅 fecha_registro | DATE | | Fecha de alta en el sistema |
+| 🕒 ultima_actividad | DATETIME | | Último acceso o acción |
+| 📣 preferencia_contacto | ENUM | | 'email', 'telefono', 'sms' |
+
+</details>
+
+## 📋 Tabla: Asignaciones
+
+<details>
+<summary>Ver detalles</summary>
+
+| Campo | Tipo | Restricciones | Descripción |
+|-------|------|---------------|-------------|
+| 🔑 id_asignacion | INT | PRIMARY KEY | Identificador único de la asignación |
+| 🎫 id_incidencia | INT | FOREIGN KEY | ID de la incidencia asignada |
+| 👥 id_trabajador | INT | FOREIGN KEY | ID del trabajador asignado |
+| 📅 fecha_asignacion | DATETIME | | Fecha y hora de la asignación |
+
+</details>
+
+## 🏷️ Tabla: Tematicas
+
+<details>
+<summary>Ver detalles</summary>
+
+| Campo | Tipo | Restricciones | Descripción |
+|-------|------|---------------|-------------|
+| 🔑 id_tematica | INT | PRIMARY KEY, AUTO_INCREMENT | Identificador único de la temática |
+| 📌 nombre | VARCHAR(50) | | Nombre de la temática |
+| 📝 descripcion | TEXT | | Descripción de la temática |
+
+</details>
+
+## 🔗 Relaciones Clave
+
+- 👥 **Trabajadores** pueden supervisar a otros Trabajadores (self-referencing).
+- 🎫 **Incidencias** están asociadas a Usuarios y Temáticas.
+- 📋 **Asignaciones** conectan Incidencias con Trabajadores.
+- 🏷️ **Temáticas** categorizan las Incidencias.
+
+### Este diseño permite una gestión eficiente de incidencias, trabajadores y usuarios en el sistema. 🚀
+
 
 # Gestor de Incidencias
 
