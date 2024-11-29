@@ -430,9 +430,7 @@ Así mismo definimos los dns, como las rutas que en este caso sería la salida (
 Por otra parte en la interfaz ens 19 asignamos la dirección ip 192.168.1.1/24, aquí no habrá salida ya que ens 18 será la que nos la brinde.
 
 
-—> Para leer más en detalle de la configuración clickea el siguiente enlace
+—> Para leer más en detalle de la configuración que hemos hecho en el router, dns y dhcp clickea el siguiente enlace:
 [TAS PROXMOX PDF](https://github.com/Montitan/TAS/blob/52f950c8cbe2a122739d3710e1a56d1b960c66fb/proyecto-web-tas/proxmox_router_dns_dhcp/TAS%20PROXMOX.pdf)
 
-Una vez que está bien la configuración aplicamos la configuración con el siguiente comando.
----
-
+—> Para leer más en detalle de la configuración que hemos hecho en el router, dns y dhcp clickea el siguiente enlace:
