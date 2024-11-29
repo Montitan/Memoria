@@ -439,3 +439,6 @@ ANEXOS:
 
 —> Para leer más en detalle de la Teoria del Color que hemos hecho para el proyecto, clickea el siguiente enlace:
 [Teoría del Color TAS](https://github.com/Montitan/TAS/blob/d2ccd87b58032ccaaa34af11acf44cd619309e9b/proyecto-web-tas/Teoria%20del%20color/TEORIA%20DEL%20COLOR%20TAS_MARMOUTOTO_LEONARDODUARTE_BEATRIZSUAREZ.pdf)
+
+—> Para leer más en detalle del Arbol de Flujo que hemos hecho para el proyecto, clickea el siguiente enlace:
+![Árbol de Flujo](https://github.com/Montitan/TAS/blob/8ae3d7783cc0d2d91c93959fba2f5be571849378/proyecto-web-tas/Arbol-Flujo/arbol-flujo.png)
