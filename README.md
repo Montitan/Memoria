@@ -434,5 +434,8 @@ ANEXOS:
 —> Para leer más en detalle de la configuración que hemos hecho en el router, dns y dhcp clickea el siguiente enlace:
 [TAS PROXMOX PDF](https://github.com/Montitan/TAS/blob/52f950c8cbe2a122739d3710e1a56d1b960c66fb/proyecto-web-tas/proxmox_router_dns_dhcp/TAS%20PROXMOX.pdf)
 
+—> Para leer más en detalle de la configuración en el reenvio de puertos
+[Reenvíos de Puertos TAS](https://github.com/Montitan/TAS/blob/e930c28ae5005842dd057246902bc68a3b6c0afc/proyecto-web-tas/REENVIOS%20DE%20PUERTOS/REENVIOS%20DE%20PUERTOS_TAS_M.MOUTOUTO_L.DUARTE_BSUAREZ%20(2).pdf)
+
 —> Para leer más en detalle de la Teoria del Color que hemos hecho para el proyecto, clickea el siguiente enlace:
 [Teoría del Color TAS](https://github.com/Montitan/TAS/blob/d2ccd87b58032ccaaa34af11acf44cd619309e9b/proyecto-web-tas/Teoria%20del%20color/TEORIA%20DEL%20COLOR%20TAS_MARMOUTOTO_LEONARDODUARTE_BEATRIZSUAREZ.pdf)
