@@ -114,6 +114,32 @@ TAS no es solo un sistema; es una técnica de mejora continua para la administra
 | 🗄️ BBDD          | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.4/24    | 192.168.1.1  |
 | 📡 DNS           | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.2/24    | 192.168.1.1  |
 
+
+### Descripción de elementos del Sistema
+
+- **🖥️ MAQUINA HOST**: 
+   - **Sistema Operativo**: Proxmox.
+   - **Función**: Servidor principal que aloja máquinas virtuales y gestiona recursos.
+
+- **💻 CLIENTE**: 
+   - **Sistema Operativo**: Ubuntu.
+   - **Función**: Dispositivo final utilizado por los usuarios para acceder a aplicaciones y servicios.
+
+- **🌐 ROUTER / DHCP**: 
+   - **Sistema Operativo**: Ubuntu.
+   - **Función**: Asigna direcciones IP dinámicas y gestiona el tráfico entre la red interna y externa.
+
+- **🕸️ NGINX**: 
+   - **Sistema Operativo**: Ubuntu.
+   - **Función**: Servidor web que gestiona solicitudes y actúa como proxy inverso.
+
+- **🗄️ BBDD**: 
+   - **Sistema Operativo**: Ubuntu.
+   - **Función**: Almacena y gestiona datos necesarios para las aplicaciones.
+
+- **📡 DNS**: 
+   - **Sistema Operativo**: Ubuntu.
+   - **Función**: Resuelve nombres de dominio a direcciones IP.
 ---
 ## 8. 📦 Tecnologías Utilizadas
 
@@ -388,33 +414,54 @@ Los atributos elegidos para cada tabla se han seleccionado con meticulosidad:
 ---
 
 ### 15. ARQUITECTURA DE RED
+           
+## DESCRIPCIÓN DE LA ARQUITECTURA
+### Proxmox Virtual Environment 
+<p align="right">
+<img src="https://img.icons8.com/color/48/000000/proxmox.png" width="50" alt="Proxmox">
+</p>
 
+
+Proxmox Virtual Environment es una solución de código abierto para la virtualización empresarial. Su objetivo es ayudarte a optimizar el uso de los recursos ya existentes, minimizar el coste del hardware y el tiempo empleado. Se basa en Debian GNU/Linux y utiliza un kernel de Linux personalizado -es el corazón del sistema operativo, gestionando los recursos de hardware y proporcionando servicios esenciales para el funcionamiento del software en una computadora-, por lo que las imágenes de disco (archivos ISO) en la instalación incluyen un sistema Debian completo. Además, permite su instalación sobre otra ya existente.
+
+Proxmox VE ofrece dos tipos principales de virtualización por defecto:
+- Utilización total de la virtualización a través de KVM (Máquina Virtual basada en el Kernel) 🖥️.
+  - Puedes usar máquinas virtuales (VMs) con sistemas operativos completos.
+  - Puede utilizar sistemas Windows y Linux a través de virtualización.
+  - Proporciona funciones como instantáneas, replicación y modelos.
+  - KVM ofrece virtualización completa y para virtualización mediante VirtIO.
+
+- Utilización de LXC (Linux Containers) 🐳 para la virtualización basada en contenedores.
+  - Permite correr varios sistemas operativos Linux separados al mismo tiempo.
+  - Es más liviana y eficaz que la virtualización total.
+  - Perfecto para tareas simples y conexiones en línea.
+  - Los contenedores LXC pueden ajustar la memoria RAM y el espacio en disco asignados sin necesidad de reiniciar el sistema, de forma rápida y sencilla.
+
+Proxmox VE ofrece una solución versátil que se ajusta a diversas necesidades de virtualización al combinar KVM para virtualización completa y LXC para contenedores en un mismo entorno 🌐.
+
+## Desglose de la arquitectura y su configuración
+
+- 🌐 Cada paso necesario para configurar adecuadamente la red en una máquina virtual de Proxmox incluye la creación de puentes de red, la configuración de direcciones IP mediante Netplan y la gestión de reglas con iptables para el enrutamiento del tráfico. En esta guía, abordaremos cómo instalar y configurar los servicios de DHCP y DNS utilizando `isc-dhcp-server` y `bind9`, lo que permitirá una administración completa de la red interna.
+
+- 🔧 También se incluirán prácticas recomendadas, como realizar copias de seguridad de los archivos de configuración y la importancia de verificar cada ajuste para asegurar una comunicación fluida y segura entre los dispositivos en tu infraestructura virtual.
+
+- 📜 Además, explicaremos los comandos esenciales y su propósito, desde el uso de NAT en iptables hasta la configuración de zonas de dominio en el servidor DNS. Con esta guía, podrás gestionar eficientemente tus redes internas y externas en Proxmox, asegurando que cada servicio esté correctamente enrutado y configurado.
+
+---
+## TAS: DIAGRAMA DE RED
 ![Diagrama de Red TAS](https://github.com/Montitan/TAS/blob/9826cec5ab2e4963c7d560d5763c216e6310c833/proyecto-web-tas/network-architecture/diagrams/DIAGRAMA%20DE%20RED%20TAS.png)
 
 > [!CAUTION]
 > ### Configuración Adicional
 > - 🛡️ Firewall: Se implementó iptables para control de tráfico y seguridad.
-> - 🔀 Reenvío de Puertos: Configurado para permitir acceso a servicios internos desde la red externa.             
-               
-               
-               
- 
-
-Cada etapa requerida para establecer adecuadamente la red en una máquina virtual Proxmox, abarca la formación de puentes de red, la configuración de direcciones IP a través de Netplan, y la administración de reglas con iptables para la ruta de tráfico.
-Vamos a explicar la instalación y configuración de los servicios DHCP y DNS a través de isc-dhcp-server y bind9, posibilitando una administración integral de la red interna. Además, abordaremos las prácticas óptimas, tales como efectuar copias de seguridad de los archivos de configuración y la relevancia de comprobar cada configuración para asegurar una comunicación eficaz y segura entre los dispositivos de su infraestructura virtual.
-Además, detallaremos órdenes fundamentales y su objetivo, desde la implementación de NAT en iptables hasta la configuración de zonas de dominio en el servidor DNS.
----
-
-
+> - Las reglas definidas aseguran que solo el tráfico autorizado pueda acceder a los servicios críticos.
+> - 🔀 Reenvío de Puertos: Configurado para permitir acceso a servicios internos desde la red externa.
+> - Facilita la conectividad remota a aplicaciones específicas.             
 
 # ROUTER
-
-## Configuración del Hardware de la Máquina Virtual
-
-Configuración de Hardware VM Router
+## Configuración de la Red en Proxmox
 
 ### Preparación Inicial
-
 > [!IMPORTANT]
 > Antes de proceder con la configuración de Netplan, es fundamental realizar una modificación crucial en la configuración de hardware de la máquina virtual. Por defecto, las máquinas virtuales están equipadas con una única interfaz de red. Para garantizar un rendimiento óptimo del router, es imperativo agregar una interfaz de red adicional.
 
@@ -428,29 +475,22 @@ Configuración de Hardware VM Router
 3. **Adición**: Incorpore una nueva interfaz de red a la configuración existente.
 4. **Verificación**: Asegúrese de que la nueva interfaz esté correctamente configurada y activada.
 
-> [!CAUTION]
-> Antes de proceder con la configuración de Netplan, es fundamental realizar una modificación crucial en la configuración de hardware de la máquina virtual. Por defecto, las máquinas virtuales están equipadas con una única interfaz de red. Para garantizar un rendimiento óptimo del router, es imperativo agregar una interfaz de red adicional.
-
-### Beneficios de la Configuración Dual
-
-- **Mayor Flexibilidad**: Permite separar el tráfico de red interno y externo.
-- **Seguridad Mejorada**: Facilita la implementación de políticas de seguridad más robustas.
-- **Rendimiento Optimizado**: Distribuye la carga de red entre dos interfaces.
-
+> [!TIP]
+> ### Beneficios de la Configuración Dual
+>
+> - **Mayor Flexibilidad**: Permite separar el tráfico de red interno y externo.
+> - **Seguridad Mejorada**: Facilita la implementación de políticas de seguridad más robustas.
+> - **Rendimiento Optimizado**: Distribuye la carga de red entre dos interfaces.
 ---
 
 
 # Configuración de Red Virtual
-
 ## Puentes Linux (Linux Bridges)
 
 Se utilizan dos puentes Linux para gestionar el tráfico de red entre las máquinas virtuales y la red externa:
-
 ![Linux Bridge Hardware VM Router](https://github.com/Montitan/Memoria/blob/main/proyecto-web-tas/assets/img/Linux%20Bridge%20Hardware%20VM%20Router%201.png?raw=true)
 
-
 ### 1. vmr0 (Puente Externo)
-
 - **Red**: 100.77.20.0/24
 - **Función**: Conecta el entorno virtual con la red externa a través del router del host.
 - **Características**:
@@ -458,12 +498,23 @@ Se utilizan dos puentes Linux para gestionar el tráfico de red entre las máqui
   - Facilita la comunicación entre las máquinas virtuales y la red física externa.
 
 ### 2. vmr1 (Puente Interno)
-
 - **Red**: 192.168.1.0/24
 - **Función**: Establece una red interna para la comunicación entre máquinas virtuales.
 - **Características**:
   - Permite que las máquinas virtuales se comuniquen entre sí.
   - Proporciona una ruta para que las máquinas virtuales accedan a la red externa a través de vmr0.
+
+## Instalación y Verificación de qemu-guest-agent
+
+- hacemos uso del comando: ping 8.8.8.8 : Comprobamos que tengamos conexión a internet
+- hacemos uso del comando: apt install qemu-guest-agent Para poder instalar qemu-guest-agent(permite poder visualizar dentro de proxmox las direcciones ip de las mv) 
+
+> [!TIP]
+> QEMU es un programa de código abierto que puede emular varias arquitecturas de hardware, como x86, ARM y MIPS. Su función principal es ejecutar sistemas operativos y
+> aplicaciones diseñados para una arquitectura específica en otra diferente, lo que lo hace útil para el desarrollo de software, pruebas y análisis de seguridad. QEMU, cuando > se utiliza con KVM, permite una virtualización de alto rendimiento que ofrece una solución flexible y eficiente para crear entornos virtuales en diferentes.
+>
+> qemu-guest-agent es un daemon que se instala en las máquinas virtuales (VM) y permite la comunicación entre el host Proxmox y las VMs.
+
 
 ---
 
