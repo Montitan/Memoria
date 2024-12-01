@@ -236,27 +236,34 @@ El sistema **TAS (Technical Assistance System)** se basa en una variedad de tecn
 <p>Estas funcionalidades en conjunto crean un sistema completo para gestionar solicitudes de soporte, permitiendo a los usuarios crear y dar seguimiento a sus tickets, y a los agentes de soporte administrar y resolver estas solicitudes de manera eficiente.</p>
 
 
+# 📊 Diagrama de Gantt - Funcionalidades del Proyecto
 
-| ID  | Funcionalidad                   | Tiempo Estimado   |
-|-----|----------------------------------|-------------------|
-| F1  | Login                            | 2 días            |
-| F2  | Registro                         | 2 días            |
-| F3  | Conócenos                        | 2 días            |
-| F4  | Landing Page                     | 1 semana          |
-| F5  | Restauración de credenciales     | 2 días            |
-| F6  | Enviar correo de recuperación    | 2 días            |
-| F7  | Dashboard                        | 1 semana y media  |
-|     | - Perfil de usuario              |                   |
-|     | - Cambiar correo                 |                   |
-|     | - Cambiar contraseña             |                   |
-| F8  | Gestor de Tickets                | 4 días            |
-|     | - Nuevo                          |                   |
-|     | - Sin resolver                   |                   |
-|     | - Abierto, Espera, No asignado   |                   |
-| F9  | Tareas pendientes                | 2 días            |
-| F10 | Buscar                           | 2 días            |
-| F11 | Quiénes somos                    | 1 día             |
----
+| ID  | Funcionalidad                   | Tiempo Estimado   | Semana 1 | Semana 2 | Semana 3 | Semana 4 |
+|-----|----------------------------------|-------------------|----------|----------|----------|----------|
+| F1  | Login                            | 2 días            | 🟩🟩      |          |          |          |
+| F2  | Registro                         | 2 días            | 🟦🟦      |          |          |          |
+| F3  | Conócenos                        | 2 días            | 🟨🟨      |          |          |          |
+| F4  | Landing Page                     | 1 semana          | 🟥🟥🟥🟥🟥🟥🟥🟥    |          |          |          |
+| F5  | Restauración de credenciales     | 2 días            |          | 🟪🟪      |          |          |
+| F6  | Enviar correo de recuperación    | 2 días            |          | 🟫🟫      |          |          |
+| F7  | Dashboard                        | 1 semana y media  |          | 🟧🟧🟧🟧🟧🟧🟧    |          |          |
+|     | - Perfil de usuario              |                   |          |          |          |
+|     | - Cambiar correo                 |                   |          |          |          |
+|     | - Cambiar contraseña             |                   |          |          |          |
+| F8  | Gestor de Tickets                | 4 días            |          |          | 🟩🟩🟩🟩      |
+|     | - Nuevo                          |                   |          |          |          |
+|     | - Sin resolver                   |                   |          |          |          |
+|     | - Abierto, Espera, No asignado   ||                 ||         ||         ||         |
+| F9  | Tareas pendientes                | 2 días            |             |             |             |  🟥🟥       |
+| F10  | Buscar                           | 2 días            |             |             |             |  🟦🟦       |
+| F11  | Quiénes somos                    | 1 día            |             |             |             |  🟨       |
+
+
+
+
+## 🗄️ Diseño Esquemático de la Base de Datos
+
+![Diagrama de la Base de Datos](https://github.com/Montitan/TAS/blob/8b08dcadf6d0e571fe1bba640909d8c27871bbce/proyecto-web-tas/assets/img/Dise%C3%B1o%20de%20bbdd.png)
 
 
 ## 🚀 Estructura de la Base de Datos 🚀
@@ -357,13 +364,26 @@ El sistema **TAS (Technical Assistance System)** se basa en una variedad de tecn
 - 🏷️ **Temáticas** categorizan las Incidencias.
 
 
-# Gestor de Incidencias
 
-## Diseño Esquemático de la Base de Datos
+> [!IMPORTANT]
+> ## Explicación del diseño de base de datos relacional
+>
+> Como equipo (Marc, Leo y Bea), seleccionamos una base de datos relacional en función de factores que se consideran fundamentales:
+>
+> 1. 🔗 **Integridad de los datos**: Las relaciones entidad relación entre las tablas de datos garantizan la coherencia y precisión de los datos.
+> 2. 🔍 **Eficacia de las consultas**: Facilita la realización de búsquedas complejas.
+> 3. 🔒 **Seguridad**: Facilita un control granular del acceso.
+> 4. 🔄 **Escalabilidad**: Se transforma y se ajusta conforme aumentan los datos y usuarios.
+> 5. 📊 **Normalización**: Disminuye la repetición de datos, lo que potencia la integridad.
 
-![Diagrama de la Base de Datos](https://github.com/Montitan/Memoria/blob/main/proyecto-web-tas/assets/img/DIAGRAMA%20BBDD.png?raw=true)
+### Conclusión final.
 
+Los atributos elegidos para cada tabla se han seleccionado con meticulosidad:
 
+- 📈 Análisis: Características como la prioridad y el plazo de conclusión facilitan la elaboración de indicadores de desempeño.
+- 🎯 Individualización: Fields como los gustos de contacto mejoran la experiencia del usuario.
+- 🔀 Adaptabilidad: La arquitectura tiene la capacidad de adaptarse a diversas clases de incidentes y procesos laborales.
+- 🔍 Particularidades: Las áreas de descripción ofrecen un marco integral para cada entidad.
 
 ---
 
