@@ -30,9 +30,9 @@
 - [📎 Recursos Adicionales](#recursos-adicionales)
 
 ---
-# 🌟 Briefing del Proyecto: TAS - Technical Assistance System
+# 1. 🌟 Briefing del Proyecto: TAS - Technical Assistance System
 
-## 1. Introducción
+##  Introducción
  🌟  **TAS** es un sistema innovador de gestión de incidencias que transforma cómo las empresas abordan los problemas técnicos. Con una **interfaz intuitiva** y **funcionalidades robustas**, TAS permite a los usuarios gestionar tickets, realizar seguimientos y mejorar la eficiencia operativa.
 
 ## 2. 🎯 Objetivos del Proyecto
@@ -99,12 +99,12 @@ La necesidad de un sistema centralizado de gestión de incidentes surgió debido
 
 ---
 
-## 🚀 ¡Transforma tu Gestión Técnica!
+## 6. 🚀 ¡Transforma tu Gestión Técnica!
 
 TAS no es solo un sistema; es una técnica de mejora continua para la administración técnica en entornos corporativos, fomentando la productividad y maximizando los recursos técnicos.
 
 ---
-## 🖥️ Especificaciones del Sistema
+## 7. 🖥️ Especificaciones del Sistema
 | COMPONENTE    | SO                  | ALMACENAMIENTO | CPU          | RAM  | IP                | GATEWAY      |
 |---------------|---------------------|----------------|--------------|------|-------------------|--------------|
 | 🖥️ MAQUINA HOST  | Proxmox             | 465 GB         | 4 Cores      | 8 GB | 100.77.20.132     | 100.77.20.1  |
@@ -115,7 +115,7 @@ TAS no es solo un sistema; es una técnica de mejora continua para la administra
 | 📡 DNS           | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.2/24    | 192.168.1.1  |
 
 ---
-## 📦 Tecnologías Utilizadas
+## 8. 📦 Tecnologías Utilizadas
 
 El sistema **TAS (Technical Assistance System)** se basa en una variedad de tecnologías modernas para garantizar un rendimiento óptimo y una gestión eficiente de incidencias. A continuación se detallan las principales tecnologías utilizadas:
 
@@ -136,7 +136,7 @@ El sistema **TAS (Technical Assistance System)** se basa en una variedad de tecn
 
 ---
 
-<h2>🌳 Árbol de Navegación</h2>
+<h2> 9. 🌳 Árbol de Navegación</h2>
 
 <ul>
     <li>TAS - Technical Assistance System
@@ -188,7 +188,7 @@ El sistema **TAS (Technical Assistance System)** se basa en una variedad de tecn
 
 
 ---
-## 🌟 Funcionalidades
+## 10. 🌟 Funcionalidades
 
 <details>
 <summary>👤 Gestión de Usuarios</summary>
@@ -236,7 +236,7 @@ El sistema **TAS (Technical Assistance System)** se basa en una variedad de tecn
 <p>Estas funcionalidades en conjunto crean un sistema completo para gestionar solicitudes de soporte, permitiendo a los usuarios crear y dar seguimiento a sus tickets, y a los agentes de soporte administrar y resolver estas solicitudes de manera eficiente.</p>
 
 
-# 📊 Diagrama de Gantt - Funcionalidades del Proyecto
+# 11. 📊 Diagrama de Gantt - Funcionalidades del Proyecto
 
 | ID  | Funcionalidad                   | Tiempo Estimado   | Semana 1 | Semana 2 | Semana 3 | Semana 4 |
 |-----|----------------------------------|-------------------|----------|----------|----------|----------|
@@ -261,12 +261,12 @@ El sistema **TAS (Technical Assistance System)** se basa en una variedad de tecn
 
 
 
-## 🗄️ Diseño Esquemático de la Base de Datos
+## 12.🗄️ Diseño Esquemático de la Base de Datos
 
 ![Diagrama de la Base de Datos](https://github.com/Montitan/TAS/blob/8b08dcadf6d0e571fe1bba640909d8c27871bbce/proyecto-web-tas/assets/img/Dise%C3%B1o%20de%20bbdd.png)
 
 
-## 🚀 Estructura de la Base de Datos 🚀
+## 13. 🚀 Estructura de la Base de Datos 🚀
 
 ## 👥 Tabla: Trabajadores
 <details> 
@@ -366,7 +366,7 @@ El sistema **TAS (Technical Assistance System)** se basa en una variedad de tecn
 
 
 > [!IMPORTANT]
-> ## Explicación del diseño de base de datos relacional
+> ## 14. Explicación del diseño de base de datos relacional
 >
 > Como equipo (Marc, Leo y Bea), seleccionamos una base de datos relacional en función de factores que se consideran fundamentales:
 >
@@ -386,6 +386,8 @@ Los atributos elegidos para cada tabla se han seleccionado con meticulosidad:
 - 🔍 Particularidades: Las áreas de descripción ofrecen un marco integral para cada entidad.
 
 ---
+
+### 15. ARQUITECTURA DE RED
 
 Cada etapa requerida para establecer adecuadamente la red en una máquina virtual Proxmox, abarca la formación de puentes de red, la configuración de direcciones IP a través de Netplan, y la administración de reglas con iptables para la ruta de tráfico.
 Vamos a explicar la instalación y configuración de los servicios DHCP y DNS a través de isc-dhcp-server y bind9, posibilitando una administración integral de la red interna. Además, abordaremos las prácticas óptimas, tales como efectuar copias de seguridad de los archivos de configuración y la relevancia de comprobar cada configuración para asegurar una comunicación eficaz y segura entre los dispositivos de su infraestructura virtual.
