@@ -526,12 +526,28 @@ Para la interfaz ens19, asigna la dirección IP 192.168.1.1/24, sin salida, ya q
    sudo netplan apply
    
 > [!CAUTION]
-> Nota: Si encuentras un error relacionado con "openvswitch", instálalo usando:
-> Se corrige con el siguiente comando: sudo apt install openvswitch-switch-dpdk
+> Nota: Si encuentras un error relacionado con "openvswitch", se corrige con el siguiente comando: sudo apt install openvswitch-switch-dpdk
 
 ## Establecimiento de Reglas con iptables
 Estamos listos para hacer la salida del tráfico de la red interna a través de la red externa, es decir de ens19 a ens18, para ello tenemos que establecer unas reglas con
 iptables.
+
+sudo apt install iptables
+
+Una vez instalado procedemos a setear las reglas de la siguiente manera:
+
+iptables -t nat -A POSTROUTING -o ens18 -j MASQUERADE
+
+- El comando previo establece una regla de traducción de direcciones de red (NAT) en la
+Formulario nativo de iptables.
+- Se incorpora a la cadena POSTROUTING, la cual se implementa a los paquetes justo antes de que abandonen el sistema.
+- La alternativa -o ens18 indica que la norma es aplicable a los paquetes que entran por la puerta.
+ens18 (interfaz de red)
+- La acción -j MASQUERADE señala que la fuente de estos paquetes será sustituida por una nueva versión. La dirección IP de la interfaz, lo que posibilita que dispositivos en una red privada tengan acceso a la interfaz.
+internet mediante la utilización de una dirección IP pública compartida en internet
+Este mandato posibilita que los equipos en una red interna envíen paquetes mediante el servidor.
+donde sus direcciones IP personales son sustituidas (ocultadas) por la dirección IP pública en lugar de sus direcciones IP privadas.
+externo o interno del servidor.
 
 
 ---
