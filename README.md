@@ -389,6 +389,17 @@ Los atributos elegidos para cada tabla se han seleccionado con meticulosidad:
 
 ### 15. ARQUITECTURA DE RED
 
+![Diagrama de Red TAS](https://github.com/Montitan/TAS/blob/9826cec5ab2e4963c7d560d5763c216e6310c833/proyecto-web-tas/network-architecture/diagrams/DIAGRAMA%20DE%20RED%20TAS.png)
+
+> [!CAUTION]
+> ### Configuración Adicional
+> - 🛡️ Firewall: Se implementó iptables para control de tráfico y seguridad.
+> - 🔀 Reenvío de Puertos: Configurado para permitir acceso a servicios internos desde la red externa.             
+               
+               
+               
+ 
+
 Cada etapa requerida para establecer adecuadamente la red en una máquina virtual Proxmox, abarca la formación de puentes de red, la configuración de direcciones IP a través de Netplan, y la administración de reglas con iptables para la ruta de tráfico.
 Vamos a explicar la instalación y configuración de los servicios DHCP y DNS a través de isc-dhcp-server y bind9, posibilitando una administración integral de la red interna. Además, abordaremos las prácticas óptimas, tales como efectuar copias de seguridad de los archivos de configuración y la relevancia de comprobar cada configuración para asegurar una comunicación eficaz y segura entre los dispositivos de su infraestructura virtual.
 Además, detallaremos órdenes fundamentales y su objetivo, desde la implementación de NAT en iptables hasta la configuración de zonas de dominio en el servidor DNS.
