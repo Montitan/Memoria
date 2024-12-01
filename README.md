@@ -483,7 +483,6 @@ Proxmox VE ofrece una solución versátil que se ajusta a diversas necesidades d
 > - **Rendimiento Optimizado**: Distribuye la carga de red entre dos interfaces.
 ---
 
-
 # Configuración de Red Virtual
 ## Puentes Linux (Linux Bridges)
 
@@ -505,17 +504,16 @@ Se utilizan dos puentes Linux para gestionar el tráfico de red entre las máqui
   - Proporciona una ruta para que las máquinas virtuales accedan a la red externa a través de vmr0.
 
 ## Instalación y Verificación de qemu-guest-agent
+QEMU es un programa de código abierto que puede emular varias arquitecturas de hardware, como x86, ARM y MIPS. Su función principal es ejecutar sistemas operativos y
+aplicaciones diseñados para una arquitectura específica en otra diferente, lo que lo hace útil para el desarrollo de software, pruebas y análisis de seguridad. QEMU, cuando > se utiliza con KVM, permite una virtualización de alto rendimiento que ofrece una solución flexible y eficiente para crear entornos virtuales en diferentes.
+
+qemu-guest-agent es un daemon que se instala en las máquinas virtuales (VM) y permite la comunicación entre el host Proxmox y las VMs.
 
 - hacemos uso del comando: ping 8.8.8.8 : Comprobamos que tengamos conexión a internet
 - hacemos uso del comando: apt install qemu-guest-agent Para poder instalar qemu-guest-agent(permite poder visualizar dentro de proxmox las direcciones ip de las mv) 
 
 > [!TIP]
-> QEMU es un programa de código abierto que puede emular varias arquitecturas de hardware, como x86, ARM y MIPS. Su función principal es ejecutar sistemas operativos y
-> aplicaciones diseñados para una arquitectura específica en otra diferente, lo que lo hace útil para el desarrollo de software, pruebas y análisis de seguridad. QEMU, cuando > se utiliza con KVM, permite una virtualización de alto rendimiento que ofrece una solución flexible y eficiente para crear entornos virtuales en diferentes.
->
-> qemu-guest-agent es un daemon que se instala en las máquinas virtuales (VM) y permite la comunicación entre el host Proxmox y las VMs.
-
-
+> Opcional: Instala net-tools para monitorear la red, supervisar servicios y tráfico sin necesidad de usar ip -a constantemente
 ---
 
 ## Funcionamiento del Sistema
