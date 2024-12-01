@@ -524,9 +524,15 @@ Para la interfaz ens18, asigna la dirección IP 100.77.20.24/24 y define los DNS
 Para la interfaz ens19, asigna la dirección IP 192.168.1.1/24, sin salida, ya que ens18 proporcionará acceso a Internet.
 3. Aplicar Configuración: Aplica los cambios con el siguiente comando:
    sudo netplan apply
+   
 > [!CAUTION]
 > Nota: Si encuentras un error relacionado con "openvswitch", instálalo usando:
 > Se corrige con el siguiente comando: sudo apt install openvswitch-switch-dpdk
+
+## Establecimiento de Reglas con iptables
+Estamos listos para hacer la salida del tráfico de la red interna a través de la red externa, es decir de ens19 a ens18, para ello tenemos que establecer unas reglas con
+iptables.
+
 
 ---
 
