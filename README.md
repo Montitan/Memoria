@@ -549,10 +549,185 @@ Este mandato posibilita que los equipos en una red interna envíen paquetes medi
 donde sus direcciones IP personales son sustituidas (ocultadas) por la dirección IP pública en lugar de sus direcciones IP privadas.
 externo o interno del servidor.
 
+## Funcionamiento del NAT
+Este comando permite a los dispositivos en una red interna enviar paquetes a través del servidor,
+donde sus direcciones IP privadas son reemplazadas (enmascaradas) por la dirección IP pública
+o externa del servidor.
 
+## Comprobación de Reglas
+Para verificar las reglas establecidas en iptables, puedes utilizar el siguiente comando:
+sudo iptables -t nat -L
+
+## Instalación de iptables-persistent
+El comando se utiliza para instalar el paquete “iptables-persistent” y permite que las iptables se guarden y se carguen automáticamente sin importar el reinicio de la máquina. La 'y' confirma la instalación.
+
+sudo apt install iptables-persistent-y
+
+En caso de que por alguna casualidad ya tengamos iptables-persistent, podemos guardar las reglas de la siguiente manera:
+iptables-save
+
+## Habilitar el Reenvío de Paquetes IPv4
+Solo nos falta un último paso para para poder permitir que las futuras máquinas o las que ya tengamos, puedan conectarse a internet sería editar el siguiente archivo el cual permite varias opciones Sin embargo la que nos interesa es aquélla que permite el reenvío de paquetes por ipv4. Basta con descomentar esta línea.
+
+![Reenvio de paquete IPV4](https://github.com/Montitan/TAS/blob/d338fd38fac6689361da523edf8563359ddbe568/proyecto-web-tas/assets/img/sysctl.conf_ipv4.png)
+
+Aplicamos los cambios: Usamos el comando para editar el archivo usando vim, este archivo se usa para configurar los parámetros del kernel que persisten después de reiniciar.
+sudo sysctl -p
+
+Guardamos el archivo y aplicamos las nuevas configuraciones usando el comando “sysctl -p” para cargar los nuevos cambios sin reiniciar
+Y si todo sale bien, vemos en el output que se aplica la regla sin necesidad de reiniciar.
 ---
 
+## Configuración del Servicio DHCP en el Router
 
+- Para comenzar a configurar el servicio de DHCP en nuestro router, es evidente que necesitamos haber realizado toda la configuración anterior. A continuación, se describen los pasos necesarios para instalar y configurar el servidor DHCP.
+
+## Instalación del Paquete DHCP
+
+Primero, necesitamos instalar el paquete necesario:
+sudo apt install isc-dhcp-server
+
+Una vez instalado, es necesario comprobar el estado del servicio:
+sudo systemctl status isc-dhcp-server
+
+Copia de Seguridad del Archivo de Configuración
+Es recomendable crear una copia de seguridad del archivo de configuración del servidor DHCP en el mismo directorio:
+sudo cp /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf.backup
+
+Edición del Archivo de Configuración
+Abrimos el archivo dhcpd.conf utilizando el editor de texto vim:
+sudo vim /etc/dhcp/dhcpd.conf
+
+![Edicion dhcp.config](https://github.com/Montitan/TAS/blob/30a9299eec1ac6bce1c77edb1efd5da3979ec2d8/proyecto-web-tas/assets/img/dhcp.conf.png)
+
+El archivo de configuración `dhcpd.conf` es utilizado por el servidor DHCP para asignar direcciones IP y otros parámetros de red a los clientes dentro de una subred específica. A continuación, se explica cada parte del contenido:
+
+- **`subnet 192.168.1.0 netmask 255.255.255.0 { ... }`**: Define una subred con la dirección base `192.168.1.0` y una máscara de subred `255.255.255.0`. Dentro de esta configuración se especifican los parámetros para los clientes que se conecten a esta subred.
+
+- **`range 192.168.1.10 192.168.1.100;`**: Especifica el rango de direcciones IP que el servidor DHCP puede asignar dinámicamente a los clientes, desde `192.168.1.10` hasta `192.168.1.100`.
+
+- **`option subnet-mask 255.255.255.0;`**: Define la máscara de subred que se asignará a los clientes.
+
+- **`option routers 192.168.1.1;`**: Especifica la dirección IP del router predeterminado (gateway) que los clientes deben usar para acceder a otras redes.
+
+- **`option broadcast-address 192.168.1.255;`**: Indica la dirección de broadcast para la subred, utilizada para enviar mensajes a todos los dispositivos en la red.
+
+- **`option domain-name-servers 192.168.1.2, 8.8.8.8;`**: Define las direcciones IP de los servidores DNS que los clientes deben usar para resolver nombres de dominio.
+
+- **`default-lease-time 600;`**: Establece el tiempo predeterminado (en segundos) durante el cual un cliente puede usar una dirección IP antes de solicitar su renovación.
+
+- **`max-lease-time 7200;`**: Define el tiempo máximo (en segundos) que un cliente puede retener una dirección IP.
+
+- **`ddns-update-style interim;` y `ddns-updates on;`**: Configuran el estilo de actualización del DNS dinámico (DDNS) y habilitan las actualizaciones DDNS automáticas.
+
+- **`ddns-domainname "tas.io.";` y `ddns-rev-domainname "in-addr.arpa.";`**: Especifican los nombres de dominio para las actualizaciones DDNS directas e inversas.
+
+- **`update-static-leases on;`**: Permite actualizaciones DDNS para arrendamientos estáticos.
+
+- **`ignore client-updates;`**: Indica al servidor DHCP que ignore cualquier solicitud del cliente para actualizar su información DNS.
+
+- **`authoritative;`**: Declara que este servidor DHCP es autoritativo para la subred especificada, respondiendo a todas las solicitudes DHCP en esta red.
+
+- **`option domain-name "tas.io";`**: Establece el nombre de dominio que se asignará a los clientes dentro de esta subred.
+
+La parte comentada es un ejemplo de cómo podríamos asignar direcciones IP mediante las direcciones MAC de las interfaces de red.
+
+## Configuración extra
+Dentro del archivo /etc/default/isc-dhcp-server, revisamos nuestras IPs para asegurarnos de que todo cuadre con lo configurado dentro de Netplan.
+Aquí se especifican las interfaces de red en las que el servidor DHCP (isc-dhcp-server) escuchará y proporcionará servicios DHCP:
+
+![DHCP:isc-dhcp-server](https://github.com/Montitan/TAS/blob/336ee75753e93019863d6139a42f36c57acf29bb/proyecto-web-tas/assets/img/isc-dhcp-server-ipv6.png)
+
+
+El servidor DHCP está congurado para operar en la interfaz de red "ens19". Esto signica que proporcionará direcciones IPV4 a los dispositivos conectados a
+esta interfaz. El servicio DHCP solo funcionará para IPv4 en la red conectada a ens19. No se ofrecerá servicio DHCP para IPv6 en ninguna interfaz.
+
+## Registro de Concesiones
+El archivo /var/lib/dhcp/dhcpd.leases es utilizado por el servidor DHCP para guardar información sobre las concesiones de direcciones IP asignadas a los clientes. Este archivo es un registro persistente que se actualiza cada vez que se adquiere, renueva o libera una concesión de IP.
+
+# Configuración del Servidor DNS con BIND9
+Para poder instalar `bind9`, necesitamos comprobar nuestra conexión a Internet. Otro paquete útil es `dnsutils`, que contiene herramientas como `nslookup` (aunque es opcional).
+
+## Comprobación de la Conexión a Internet
+Primero, verifica tu conexión a Internet utilizando el siguiente comando:
+- ping google.com
+
+## Instalación de BIND9 y dnsutils
+Instala bind9 y, opcionalmente, dnsutils (que contiene instrucciones como nslookup):
+- sudo apt install bind9 dnsutils
+
+## Comprobación de estado
+Una vez instalado es necesario comprobar el estado del servicio, con el siguiente comando:
+- sudo systemctl status bind9
+
+![DNS:systemctl status bind9](https://github.com/Montitan/TAS/blob/b3b17306673c836ef73abebef8623106a67b9971/proyecto-web-tas/assets/img/dns_systemctl%20status%20bind9.png)
+
+El estado debería indicar que está configurado con zonas invertidas predeterminadas y que utiliza las direcciones DNS de Google (8.8.8.8) y Cloudflare (1.1.1.1).
+
+>[!TIP]
+> ## Copia de Seguridad del Archivo de Configuración
+> Es de buenas praxis: Antes de empezar tenemos que crear un respaldo de los archivos de configuración originales, para que en caso de que se estropee algo se pueda empezar de nuevo.
+>sudo cp /etc/bind/named.conf.local /etc/bind/named.conf.local.bkp
+
+## Configuración del Archivo named.conf.local
+El archivo named.conf.local es un archivo de configuración que se utiliza para definir las zonas de dominio. Una zona de dominio es una parte del espacio de nombres de dominio
+que se administra de manera independiente. El archivo named.conf.local también se utiliza para definir los servidores DNS secundarios y los servidores de nombres raíz.
+
+## Para configurar este archivo, se deben seguir algunos pasos clave:
+- Crear una Zona: Abre el archivo /etc/bind/named.conf.local con tu editor de texto favorito (por ejemplo, nvim). se debe agregar una sección que defina la zona que se va a configurar. Esto incluye el nombre de dominio y la dirección IP del servidor.
+  cat /etc/bind/named.conf.local
+
+- Crear registros: Una vez creada la zona, se pueden crear registros DNS para los servidores y dispositivos en esa zona. Los registros pueden incluir registros A (que asignan una dirección IP a un nombre de dominio) y registros CNAME (que asignan un nombre de dominio a otro nombre de dominio).
+
+- Configurar la resolución inversa: También se puede configurar la resolución inversa en el archivo /etc/bind/named.conf.local. Esto permite que el servidor
+resuelva una dirección IP en un nombre de dominio
+
+- Editamos el fichero /etc/bind/named.conf.local con tu editor de texto favorito. (nvim en
+nuestro caso).
+
+- Añade la siguiente línea al archivo:
+ zone «tas.io» {
+
+- Especifica el tipo de zona que estás configurando. En este ejemplo, estamos configurando una zona directa, por lo que añadimos la siguiente línea:
+  type master;
+
+- Especifica la ruta donde se encuentra el archivo de zona. En este caso, hemos creado un archivo llamado tudominio.com.zone en la ruta /etc/bind/zones/.
+file «/etc/bind/zones/db.tas.io»;
+
+- Añade la siguiente línea para establecer los permisos de acceso al archivo de zona:
+allow-update { none; };
+
+- Cierra el bloque de zona con la siguiente línea:
+};
+
+![DNS: named.conf.local](https://github.com/Montitan/TAS/blob/da5c7fbe291a287aa3780f97708cdaa252335fe0/proyecto-web-tas/assets/img/named.conf.local_dns.png)
+
+## Comprobación de sintaxis
+- Con el siguiente sirve para chequear la sintaxis de los ficheros de configuración de BIND. En el chequeo incluye aquellos ficheros de la instrucción include.
+sudo named-checkconf
+Si nos devuelve ningún error, todo está correcto.
+
+## Creación del Archivo de Zona
+El archivo de zona que contiene los registros DNS para el dominio configurado.
+
+### Paso a paso
+1. Crea el archivo de zona en la ruta /etc/bind/zones/. Lo hemos llamado "tas.io".
+2. Abre el archivo con tu editor de texto favorito.
+3. Añade los siguientes registros DNS para tu dominio:
+
+- $TTL 86400
+- @ IN SOA ns.tas.io. root.tas.io. (
+    - 2 ; Serial
+    - 604800 ; Refresh
+    - 86400 ; Retry
+    - 2419200 ; Expire
+    - 604800 ) ; Minimum TTL
+
+- @ IN NS ns.tas.io.
+- @ IN A 192.168.1.2
+- ns IN A 192.168.1.2
+
+![DNS archivo de zonas: etc/bind/zones](https://github.com/Montitan/TAS/blob/d81101a61c618a9c1c4d8dc9c4b51fc55761fa74/proyecto-web-tas/assets/img/etc_bind_zones.png)
 
 ### Comunicación Interna
 
@@ -613,5 +788,3 @@ ANEXOS:
 —> Para leer más en detalle de la Teoria del Color que hemos hecho para el proyecto, clickea el siguiente enlace:
 [Teoría del Color TAS](https://github.com/Montitan/TAS/blob/d2ccd87b58032ccaaa34af11acf44cd619309e9b/proyecto-web-tas/Teoria%20del%20color/TEORIA%20DEL%20COLOR%20TAS_MARMOUTOTO_LEONARDODUARTE_BEATRIZSUAREZ.pdf)
 
-—> Para leer más en detalle del Arbol de Flujo que hemos hecho para el proyecto, clickea el siguiente enlace:
-![Árbol de Flujo](https://github.com/Montitan/TAS/blob/8ae3d7783cc0d2d91c93959fba2f5be571849378/proyecto-web-tas/Arbol-Flujo/arbol-flujo.png)
