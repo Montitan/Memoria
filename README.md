@@ -514,9 +514,23 @@ qemu-guest-agent es un daemon que se instala en las máquinas virtuales (VM) y p
 
 > [!TIP]
 > Opcional: Instala net-tools para monitorear la red, supervisar servicios y tráfico sin necesidad de usar ip -a constantemente
+
+## Configuración de Direcciones IP con Netplan
+
+La manera de poder configurar direcciones ips cuando no tenemos dhcp es hacerlo usando NETPLAN
+- 1. Usamos un editor de texto: Ejecutamos el archivo de configuración utilizando vim. Si hay un archivo denominado 50-cloud-init.yaml, es importante que se verifique su existencia ya que se regenerará al reiniciar el equipo.
+- 2. Configuración del Archivo: Edita el archivo para definir ambas interfaces de red:
+Para la interfaz ens18, asigna la dirección IP 100.77.20.24/24 y define los DNS y la puerta de enlace (gateway).
+Para la interfaz ens19, asigna la dirección IP 192.168.1.1/24, sin salida, ya que ens18 proporcionará acceso a Internet.
+3. Aplicar Configuración: Aplica los cambios con el siguiente comando:
+   sudo netplan apply
+> [!CAUTION]
+> Nota: Si encuentras un error relacionado con "openvswitch", instálalo usando:
+> Se corrige con el siguiente comando: sudo apt install openvswitch-switch-dpdk
+
 ---
 
-## Funcionamiento del Sistema
+
 
 ### Comunicación Interna
 
@@ -535,31 +549,7 @@ qemu-guest-agent es un daemon que se instala en las máquinas virtuales (VM) y p
 
 ---
 
-## Diagrama de Red
 
-```
-+----------------+       +----------------+
-|  Máquinas      |       |                |
-|  Virtuales     |       |   Internet     |
-|                |       |                |
-|(192.168.1.0/24)|       |                |
-|       |        |       |                |
-|       |        |       |                |
-|     vmr1       |       |                |
-|       |        |       |                |
-|       |        |       |                |
-|     vmr0       |       |                |
-|       |        |       |                |
-+-------|--------+       +----------------+
-        |
-        |
-   (100.77.20.0/24)
-        |
-        |
-+-------|--------+
-|   Router Host  |
-+----------------+
-```
 ---
 
 Comprobamos que tengamos conexión a internet para poder instalar qemu-guest-agent (sirve para poder visualizar dentro de proxmox que direcciones ip tiene las mv)
