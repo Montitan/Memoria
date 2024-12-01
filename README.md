@@ -18,7 +18,8 @@
 </p>
 
 ## 📚 Índice
-- [📋 Descripción](#descripción)
+-
+- [📋 Briefing del proyecto](#briefing)
 - [🎯 Objetivos del Proyecto](#-objetivos-del-proyecto)
 - [📦 Tecnologías Utilizadas](#-tecnologías-utilizadas)
 - [🖥️ Especificaciones del Sistema](#️-especificaciones-del-sistema)
@@ -729,53 +730,44 @@ El archivo de zona que contiene los registros DNS para el dominio configurado.
 
 ![DNS archivo de zonas: etc/bind/zones](https://github.com/Montitan/TAS/blob/d81101a61c618a9c1c4d8dc9c4b51fc55761fa74/proyecto-web-tas/assets/img/etc_bind_zones.png)
 
-### Comunicación Interna
+![DNS archivo de zonas inversas: etc/bind/zones](https://github.com/Montitan/TAS/blob/4988a4f52e8fb70afbc64fd9a1af5162bd6c0b0c/proyecto-web-tas/assets/img/etc_bind_zones_2.png)
 
-- Las máquinas virtuales conectadas a `vmr1` pueden comunicarse directamente entre sí dentro de la red 192.168.1.0/24.
+Después de configurar ambas zonas. Es necesario ,que al igual que con el archivo named.conf.locale, revisar que ambas estén bien configuradas. Para ello solo sigue los siguientes pasos:
 
-### Acceso a Internet
+named-checkzone_1.168.192.in-addr-arpa etc/bind/zones/db.1.168.192
+named-checkzone tas.io etc/bind/zones/db.tas.io
 
-1. El tráfico de las máquinas virtuales destinado a Internet pasa primero por `vmr1`.
-2. A continuación, se enruta a través de `vmr0` para llegar a la red externa (100.77.20.0/24).
-3. Por último, el router host gestiona la conexión a Internet.
+## Edición del Archivo resolv.conf
+Por último, edita el archivo /etc/resolv.conf. Verifica si tiene un enlace a otro fichero /run/systemd/resolv/resolv.conf. Esto es necesario ya que por defecto resolverá direcciones DNS por la IP 127.0.0.53
 
-### Segmentación y Seguridad
+![DNS archivo de resolv.conf: etc/resolv.conf](https://github.com/Montitan/TAS/blob/90edba35b68aaa8f09a536aa1cd826dc96290fa6/proyecto-web-tas/assets/img/etc_resolv.conf.png)
 
-- Esta configuración permite una clara separación entre el tráfico interno y externo.
-- Facilita la aplicación de políticas de seguridad y control de acceso entre redes.
+Como se muestra en la siguiente img
+![DNS archivo de resolv.conf2: etc/resolv.conf](https://github.com/Montitan/TAS/blob/642bed4ff1ede3b4c415451af4d0356ec7a3a365/proyecto-web-tas/assets/img/etc_resolv.conf_2.png)
 
----
+Por último solo queda reiniciar el servicio bind9.
+sudo systemctl restart bind9
 
+Revisamos el estatus
+sudo systemctl status bind9
 
----
+Verificación del Funcionamiento del Servidor DNS
+Para comprobar si está bien configurado y funcionando como servidor DNS, utiliza las herramientas del paquete dnsutils, específicamente nslookup:
+nslookup 
 
-Comprobamos que tengamos conexión a internet para poder instalar qemu-guest-agent (sirve para poder visualizar dentro de proxmox que direcciones ip tiene las mv)
+![nslookup](https://github.com/Montitan/TAS/blob/64e349ef3523f1ba80dbd94b8b4c637fbe3c5299/proyecto-web-tas/assets/img/nslookup.png)
 
-> [!TIP]
-> Opcional: Instalar net-tools para poder monitorear la red, supervisar servicios, máquinas, tráfico de red y dispositivos de red, y no tener que utilizar `ip -a` todo el tiempo. La manera recomendada de configurar direcciones IP cuando no tenemos DHCP es usando NETPLAN.
+Vemos que efectivamente estamos resolviendo con la dirección de nuestro dns.
+Nos salimos y lo único que faltaría es probar es probar el servidor dns desde otra maquina como si fuera otro cliente.
 
-> [!CAUTION]
-> Es muy importante tener en cuenta lo siguiente:
-> 
-> 1. Si el archivo tiene el nombre '50-cloud-init.yaml' (que viene por defecto), es necesario renombrarlo.
-> 2. En caso de reiniciar la máquina, el archivo '50-cloud-init.yaml' no se guarda y se vuelve a generar automáticamente.
-> 3. Al editar el archivo de configuración, debemos tener en cuenta los rangos de IP que tenemos establecidos en Proxmox.
->
-> Procedimiento recomendado:
-> 1. Renombrar el archivo '50-cloud-init.yaml' a un nombre personalizado, por ejemplo '01-netcfg.yaml'.
-> 2. Editar el nuevo archivo con la configuración deseada.
-> 3. Asegurarse de que las IP configuradas estén dentro del rango permitido en Proxmox.
+![cliente](https://github.com/Montitan/TAS/blob/9fdc9cc577152bd8f03cae0c8e8fa2f3fd09a7dd/proyecto-web-tas/assets/img/cliente.png)
 
+Vemos que nuestro cliente está dentro de la misma red y puesto que resuelva con la 192.168.1.2 que es nuestro dns.
+- Comprobamos haciendo un nslookup
 
-![Interfaces de red](https://github.com/Montitan/Memoria/blob/main/proyecto-web-tas/assets/img/Interfaces%20de%20red.png?raw=true)
+![cliente_nslookup](https://github.com/Montitan/TAS/blob/f9662e14af439651c862b7a265e8b2f205565961/proyecto-web-tas/assets/img/cliente_nslookup.png)
 
-
-Como podemos ver en la imagen superior estamos editando ambas interfaces de red.
-Esta edición de interfaces nos permitirá la comunicación entre máquinas para que tengan comunicación con el host a partir del mismo router.
-En la interfaz ens18 asignamos la direccion ip 100.77.20.24/24
-Así mismo definimos los dns, como las rutas que en este caso sería la salida (gateway) de esa interfaz
-
-Por otra parte en la interfaz ens 19 asignamos la dirección ip 192.168.1.1/24, aquí no habrá salida ya que ens 18 será la que nos la brinde.
+Tenemos SERVIDOR DNS FUNCIONANDO
 
 ANEXOS:
 
