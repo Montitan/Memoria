@@ -1,113 +1,193 @@
-# 🚀 TAS - Technical Assistance System
+#  🚀 TAS: "Simplificando la Asistencia Técnica"
+![Estado del Proyecto](https://img.shields.io/badge/estado-en%20desarrollo-yellow) ![Licencia](https://img.shields.io/badge/licencia-MIT-green) ![Versión](https://img.shields.io/badge/version-1.0.0-blue)
 
 ![Banner de TAS](https://github.com/Montitan/TAS/blob/main/proyecto-web-tas/assets/img/bannerTas.png?raw=true)
+<p align="right">
+  <img src="https://img.icons8.com/color/48/000000/proxmox.png" width="50" alt="Proxmox">
+  <img src="https://img.icons8.com/color/48/000000/nginx.png" width="50" alt="Nginx">
+  <img src="https://img.icons8.com/color/48/000000/cloudflare.png" width="50" alt="Cloudflare">
+  <img src="https://raw.githubusercontent.com/lpispek/logos/2a1367abc3a98ad7526cc03b38ee73928e3bd08e/dhcp_112x112.png" width="50" alt="DHCP">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf3nc9CLvb2mKqLziw76kewntr4O8SYG5sR-UVJGLSqteRdSh1oGO76paD9Z5UWrWMBEQ&usqp=CAU" width="50" alt="DNS">
+  <img src="https://img.icons8.com/color/48/000000/html-5.png" width="50" alt="HTML">
+  <img src="https://img.icons8.com/color/48/000000/css3.png" width="50" alt="CSS">
+  <img src="https://img.icons8.com/color/48/000000/javascript.png" width="50" alt="JavaScript">
+  <img src="https://img.icons8.com/color/48/000000/bootstrap.png" width="50" alt="Bootstrap">
+  <img src="https://img.icons8.com/color/48/000000/mysql-logo.png" width="50" alt="MySQL">
+  <img src="https://miro.medium.com/v2/resize:fit:1400/1*5Hnnv0awfSv0BGcq1C522w.png" width="50" alt="phpMyAdmin">
+  <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="50" alt="GitHub">
+</p>
 
-## Descripción
-
-TAS es un sistema integral de gestión de incidencias diseñado para facilitar la comunicación y el seguimiento de problemas técnicos. Con una interfaz intuitiva y funcionalidades robustas, TAS permite a los usuarios gestionar tickets, realizar seguimientos y mejorar la eficiencia operativa.
+## 📚 Índice
+- [📋 Descripción](#descripción)
+- [🎯 Objetivos del Proyecto](#-objetivos-del-proyecto)
+- [📦 Tecnologías Utilizadas](#-tecnologías-utilizadas)
+- [🖥️ Especificaciones del Sistema](#️-especificaciones-del-sistema)
+- [🌳 Árbol de Navegación](#-árbol-de-navegación)
+- [🌟 Funcionalidades](#-funcionalidades)
+- [🚀 Estructura de la Base de Datos](#🚀-estructura-de-la-base-de-datos)
+- [🔗 Relaciones Clave](#🔗-relaciones-clave)
+- [🌐 Configuración de Red Virtual](#configuración-de-red-virtual)
+- [📎 Recursos Adicionales](#recursos-adicionales)
 
 ---
+# 🌟 Briefing del Proyecto: TAS - Technical Assistance System
 
-## 🎯 Objetivos del Proyecto
+## 1. Introducción
+ 🌟  **TAS** es un sistema innovador de gestión de incidencias que transforma cómo las empresas abordan los problemas técnicos. Con una **interfaz intuitiva** y **funcionalidades robustas**, TAS permite a los usuarios gestionar tickets, realizar seguimientos y mejorar la eficiencia operativa.
 
-Nuestro sistema TAS (Technical Assistance System) está diseñado para alcanzar los siguientes objetivos clave:
+## 2. 🎯 Objetivos del Proyecto
+Nuestro sistema **TAS (Technical Assistance System)** está diseñado para alcanzar los siguientes objetivos clave en el ámbito corporativo:
 
 <details>
 <summary>🔗 Mejorar la Comunicación y Resolución de Incidencias</summary>
 
 Facilitar una comunicación fluida y eficiente entre:
-- 👨‍🎓 Estudiantes
-- 👩‍🏫 Profesores
-- 🏫 Departamento Académico
-- 👨‍💻 Equipo Técnico
+- 👨‍💼 **Empleados**
+- 👩‍💻 **Equipo de Soporte Técnico**
+- 🏢 **Departamentos Interesados**
 
-Esto permite una resolución más rápida y efectiva de las incidencias técnicas.
+Esto permite una resolución más rápida y efectiva de las incidencias técnicas, mejorando la colaboración y reduciendo el tiempo de inactividad.
 </details>
 
 <details>
 <summary>🛠️ Optimizar el Trabajo del Equipo Técnico</summary>
 
-- 📊 Proporcionar información completa y actualizada de todas las incidencias del centro.
-- ⏱️ Permitir una respuesta rápida y eficiente a los problemas técnicos.
-- 📱 Acceso a la información en cualquier momento y lugar.
+- 📊 Proporcionar información completa y actualizada sobre todas las incidencias en la organización.
+- ⏱️ Permitir una respuesta rápida y eficiente a los problemas técnicos mediante herramientas de priorización.
+- 📱 Facilitar el acceso a la información en cualquier momento y lugar, promoviendo un entorno de trabajo flexible.
 </details>
 
 <details>
 <summary>📝 Gestión Integral de Incidencias</summary>
 
-- 🗃️ Asegurar que todas las incidencias queden debidamente registradas.
-- 🏷️ Clasificar las incidencias según su importancia y dificultad.
-- 📈 Facilitar el seguimiento y la priorización de tareas.
+- 🗃️ Asegurar que todas las incidencias queden debidamente registradas en un sistema centralizado.
+- 🏷️ Clasificar las incidencias según su importancia, urgencia y dificultad para una gestión más efectiva.
+- 📈 Facilitar el seguimiento y la priorización de tareas, asegurando que se aborden las incidencias críticas primero.
 </details>
+ 
+## 3. 🌍 Contexto del Proyecto
+La necesidad de un sistema centralizado de gestión de incidentes surgió debido a:
+- 📈 La creciente necesidad de asistencia técnica.
+- 🗂️ La falta de un sistema organizado que permitiera a los usuarios realizar un seguimiento eficaz.
+- 💬 Los comentarios de los clientes indicaban la necesidad de mejorar la comunicación y la resolución de problemas.
 
-Estos objetivos están diseñados para mejorar significativamente la eficiencia operativa del centro educativo, 
-asegurando una gestión técnica más ágil y una experiencia mejorada para todos los usuarios del sistema.
 
+## 4. 🎯 Cualidades Diferenciadoras de TAS
+
+- 📞 Comunicación Eficiente: 
+ Conecta departamentos, personal técnico y usuarios finales en una plataforma consolidada.
+
+- ⚙️ Eficiencia:
+   Mejora el proceso de registro, seguimiento y resolución de incidentes.
+
+- 🖥️ Tecnología Intuitiva: 
+   Elaborado para ser fácil de usar y accesible para todos los niveles de usuarios.
+
+## 5. 💡 Beneficios 
+
+1. ⚡ Resolución Inmediata:
+   - 🕒 Monitoreización de incidencias en tiempo real.
+   - 🔝 Asignación por priorización según responsabilidades al equipo técnico.
+
+2. 📈 Avance constante:
+   - 📊 Registro dn detalle de las incidencias.
+   - 🔍 Reconocimiento de patrones para evitar problemas que se repiten.
+
+3. 🔄 Administración de casos:
+   - 🏷️ Clasificación de los tickets.
+   - 💻 Acceso a datos en cualquier momento y lugar.
+
+---
+
+## 🚀 ¡Transforma tu Gestión Técnica!
+
+TAS no es solo un sistema; es una técnica de mejora continua para la administración técnica en entornos corporativos, fomentando la productividad y maximizando los recursos técnicos.
+
+---
+## 🖥️ Especificaciones del Sistema
+| COMPONENTE    | SO                  | ALMACENAMIENTO | CPU          | RAM  | IP                | GATEWAY      |
+|---------------|---------------------|----------------|--------------|------|-------------------|--------------|
+| 🖥️ MAQUINA HOST  | Proxmox             | 465 GB         | 4 Cores      | 8 GB | 100.77.20.132     | 100.77.20.1  |
+| 💻 CLIENTE       | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.11/24   | 192.168.1.1  |
+| 🌐 ROUTER / DHCP | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.1/24    | 192.168.1.1  |
+| 🕸️ NGINX         | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.3/24    | 192.168.1.1  |
+| 🗄️ BBDD          | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.4/24    | 192.168.1.1  |
+| 📡 DNS           | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.2/24    | 192.168.1.1  |
 
 ---
 ## 📦 Tecnologías Utilizadas
 
-- **Frontend**: HTML, CSS, Js
-- **Backend**: Node.js, Express
-- **Base de Datos**: MySql
-- **Control de Versiones**: Git
+El sistema **TAS (Technical Assistance System)** se basa en una variedad de tecnologías modernas para garantizar un rendimiento óptimo y una gestión eficiente de incidencias. A continuación se detallan las principales tecnologías utilizadas:
 
----
-
-## 🖥️ Especificaciones del Sistema
-
-| COMPONENTE    | SO                  | ALMACENAMIENTO | CPU          | RAM  | IP                | GATEWAY      |
-|---------------|---------------------|----------------|--------------|------|-------------------|--------------|
-| MAQUINA HOST  | Proxmox             | 465 GB         | 4 Cores      | 8 GB | 100.77.20.132     | 100.77.20.1  |
-| CLIENTE       | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.11/24   | 192.168.1.1  |
-| ROUTER / DHCP | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.1/24    | 192.168.1.1  |
-| NGINX         | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.3/24    | 192.168.1.1  |
-| BBDD          | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.4/24    | 192.168.1.1  |
-| DNS           | Ubuntu 22.04.01     | 14 GB          | 1            | 2 GB | 192.168.1.2/24    | 192.168.1.1  |
-
+| Categoría        | Tecnología  | Descripción                                                                                       | Icono                                                                                   |
+|------------------|-------------|---------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| 🌐 Infraestructura | Proxmox    | Plataforma de virtualización que permite gestionar máquinas virtuales y contenedores.            | <img src="https://img.icons8.com/color/48/000000/proxmox.png" width="50" height="50" alt="Proxmox">                       |
+|                  | Nginx      | Servidor web y proxy inverso que maneja la carga y mejora el rendimiento del sistema.            | <img src="https://img.icons8.com/color/48/000000/nginx.png" width="50" height="50" alt="Nginx">                           |
+|                  | Cloudflare | Servicio de CDN (Content Delivery Network) que optimiza la seguridad y velocidad del sitio web.  | <img src="https://img.icons8.com/color/48/000000/cloudflare.png" width="50" height="50" alt="Cloudflare">                 |
+| 💻 Desarrollo     | HTML       | Estructura básica de las páginas web.                                                            | <img src="https://img.icons8.com/color/48/000000/html-5.png" width="50" height="50" alt="HTML">                           |
+|                  | CSS        | Estilos y diseño visual para una experiencia de usuario atractiva.                               | <img src="https://img.icons8.com/color/48/000000/css3.png" width="50" height="50" alt="CSS">                             |
+|                  | JavaScript | Interactividad y dinamismo en la interfaz del usuario.                                          | <img src="https://img.icons8.com/color/48/000000/javascript.png" width="50" height="50" alt="JavaScript">                 |
+|                  | Bootstrap  | Framework CSS que proporciona componentes pre-estilizados y un sistema de cuadrícula responsivo.  | <img src="https://img.icons8.com/color/48/000000/bootstrap.png" width="50" height="50" alt="Bootstrap">                   |
+| 🗄️ Base de Datos   | MySQL      | Sistema de gestión de bases de datos relacional utilizado para almacenar datos.                   | <img src="https://img.icons8.com/color/48/000000/mysql-logo.png" width="50" height="50" alt="MySQL">                      |
+|                  | phpMyAdmin | Herramienta de administración para MySQL que facilita la gestión de bases de datos.              | <img src="https://miro.medium.com/v2/resize:fit:1400/1*5Hnnv0awfSv0BGcq1C522w.png" width="50" height="50" alt="phpMyAdmin">|
+| 🌐 Redes         | DHCP       | Protocolo utilizado para asignar dinámicamente direcciones IP a dispositivos en la red.          | <img src="https://raw.githubusercontent.com/lpispek/logos/2a1367abc3a98ad7526cc03b38ee73928e3bd08e/dhcp_112x112.png" width="50" height="50" alt="DHCP"> |
+|                  | DNS        | Sistema de nombres de dominio que traduce nombres legibles por humanos a direcciones IP.        | <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf3nc9CLvb2mKqLziw76kewntr4O8SYG5sR-UVJGLSqteRdSh1oGO76paD9Z5UWrWMBEQ&usqp=CAU" width="50" height="50" alt="DNS"> |
+| 🔧 Control de Versiones  | GitHub     | Plataforma para alojar repositorios Git y colaborar en proyectos.                                | <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="50" height="50" alt="GitHub">|
 
 ---
 
 <h2>🌳 Árbol de Navegación</h2>
 
-<pre>
-TAS - Technical Assistance System
-│
-├── 🏠 Landing Page
-│
-├── 👤 Autenticación
-│   ├── Login
-│   ├── Registro
-│   └── Restauración de Credenciales
-│       └── Enviar Correo de Recuperación
-│
-├── ℹ️ Información
-│   ├── Conócenos
-│   └── Quiénes Somos
-│
-├── 📊 Dashboard
-│   │
-│   ├── 👤 Perfil de Usuario
-│   │   ├── Cambiar Correo
-│   │   └── Cambiar Contraseña
-│   │
-│   └── 🎫 Gestión de Tickets
-│       ├── Nuevo Ticket
-│       ├── Tickets Sin Resolver
-│       ├── Tickets Abiertos
-│       ├── Tickets en Espera
-│       ├── Tickets No Asignados
-│       ├── Tareas Pendientes
-│       ├── Actividades Recientes
-│       └── Buscar Tickets
-│
-└── 🔍 Búsqueda General
-</pre>
+<ul>
+    <li>TAS - Technical Assistance System
+        <ul>
+            <li>🏠 Landing Page</li>
+            <li>👤 Autenticación
+                <ul>
+                    <li>🔑 Login</li>
+                    <li>📝 Registro</li>
+                    <li>🔄 Restauración de Credenciales
+                        <ul>
+                            <li>📧 Enviar Correo de Recuperación</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>ℹ️ Información
+                <ul>
+                    <li>📖 Conócenos</li>
+                    <li>👥 Quiénes Somos</li>
+                </ul>
+            </li>
+            <li>📊 Dashboard
+                <ul>
+                    <li>👤 Perfil de Usuario
+                        <ul>
+                            <li>✉️ Cambiar Correo</li>
+                            <li>🔒 Cambiar Contraseña</li>
+                        </ul>
+                    </li>
+                    <li>🎫 Gestión de Tickets
+                        <ul>
+                            <li>➕ Nuevo Ticket</li>
+                            <li>❌ Tickets Sin Resolver</li>
+                            <li>📂 Tickets Abiertos</li>
+                            <li>⏳ Tickets en Espera</li>
+                            <li>🚫 Tickets No Asignados</li>
+                            <li>📝 Tareas Pendientes</li>
+                            <li>📅 Actividades Recientes</li>
+                            <li>🔍 Buscar Tickets</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>🔍 Búsqueda General</li>
+        </ul>
+    </li>
+</ul>
 
-<p>Este árbol de navegación proporciona una visión de la estructura de TAS.</p>
 
 ---
-
 ## 🌟 Funcionalidades
 
 <details>
@@ -276,7 +356,6 @@ TAS - Technical Assistance System
 - 📋 **Asignaciones** conectan Incidencias con Trabajadores.
 - 🏷️ **Temáticas** categorizan las Incidencias.
 
-### Este diseño permite una gestión eficiente de incidencias, trabajadores y usuarios en el sistema. 🚀
 
 # Gestor de Incidencias
 
