@@ -769,6 +769,18 @@ Vemos que nuestro cliente está dentro de la misma red y puesto que resuelva con
 
 Tenemos SERVIDOR DNS FUNCIONANDO
 
+Conclusion:
+
+El Technical Assistance System (TAS) representa una solución innovadora y completa para la gestión de incidencias técnicas en entornos empresariales. Este sistema ofrece múltiples beneficios:
+Mejora significativa en la comunicación entre empleados, soporte técnico y departamentos
+Optimización del trabajo del equipo técnico mediante herramientas de priorización y acceso flexible a la información1
+Gestión integral de incidencias, incluyendo registro centralizado, clasificación y seguimiento eficiente
+
+TAS se destaca por su infraestructura robusta basada en Proxmox para virtualización, Ubuntu como sistema operativo principal, y tecnologías como Nginx y MySQL1
+. El sistema implementa una arquitectura de red avanzada con dos interfaces, puentes Linux para el tráfico interno y externo, y configuración de firewall con iptables
+
+En conclusión, TAS no solo es un sistema de gestión de incidencias, sino una herramienta transformadora que potencia la eficiencia operativa, mejora la comunicación organizacional y optimiza la resolución de problemas técnicos en el ámbito corporativo
+
 ANEXOS:
 
 —> Para leer más en detalle de la configuración que hemos hecho en el router, dns y dhcp clickea el siguiente enlace:
